@@ -13,6 +13,10 @@ psycopg2 = "*"
 sqlalchemy = "*"
 feedparser = "*"
 bs4 = "*"
+scrapy = "*"
+keras = "*"
+tensorflow = "*"
+chalice = "*"
 
 [dev-packages]
 

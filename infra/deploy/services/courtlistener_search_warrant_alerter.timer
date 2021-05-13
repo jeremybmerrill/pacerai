@@ -1,0 +1,10 @@
+[Unit]
+Description=Run courtlistener_search_warrant_alerter daily
+Requires=courtlistener_search_warrant_alerter.service
+[Timer]
+Unit=courtlistener_search_warrant_alerter.service
+OnUnitInactiveSec=1d
+RandomizedDelaySec=1m
+AccuracySec=1s
+[Install]
+WantedBy=timers.target

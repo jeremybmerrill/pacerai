@@ -1,0 +1,20 @@
+[Unit]
+Description=ai_classifiers_api - run hearkenmodels ai classifiers Python API (Flask/gunicorn)
+After=network.target
+
+[Service]
+EnvironmentFile=/home/ubuntu/.env
+Environment=PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
+Environment=HOME=/home/ubuntu/
+WorkingDirectory=/home/ubuntu/tow-pacer/courtlistener_search_warrant_alerter/
+TimeoutStartSec=300
+RuntimeDirectory=gunicorn
+ExecStart=/usr/bin/python3 -m app
+ExecReload=/bin/kill -s HUP $MAINPID
+KillMode=mixed
+TimeoutStopSec=5
+PrivateTmp=true
+
+
+[Install]
+WantedBy=default.target

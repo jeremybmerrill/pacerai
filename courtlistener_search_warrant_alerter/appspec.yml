@@ -1,0 +1,32 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/tow-pacer
+# for help, consult https://blog.shikisoft.com/automate-ruby-on-rails-deployments-aws-codedeploy/
+permissions:
+  - object: /home/ubuntu/tow-pacer
+    owner: ubuntu
+    group: ubuntu
+    mode: 755
+    pattern: "*"
+    type:
+      - file
+      - directory
+hooks:
+  BeforeInstall:
+    - location: infra/deploy/pre-deploy.sh
+      timeout: 3600
+      runas: root
+  AfterInstall:
+    - location: infra/deploy/install_dependencies.sh
+      timeout: 3600
+      runas: ubuntu
+  ApplicationStart:
+    - location: infra/deploy/start_server.sh
+      timeout: 300
+      runas: root
+  ApplicationStop:
+    - location: infra/deploy/stop_server.sh
+      timeout: 300
+      runas: root

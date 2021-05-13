@@ -23,7 +23,7 @@ Subprojects:
 9. manually put some of teh annots in ner_search_warrant_objects.dev.conll and some in ner_search_warrant_objects.train.conll (copy-pasted 15k lines into .train.conll, remaining 5k in .dev.conll)
 10. BERT: https://colab.research.google.com/drive/1AsvDvSuGx-N3XoDLGuqG7MnszVuBNKyv#scrollTo=uhvt_y-4gKjP (depends on custom run_ner.py in this directory here)
     FLAIR: https://colab.research.google.com/drive/1bK5lsugjEX6X4QdGFmeA4KglUPQaRuPh#scrollTo=79q5hRTtHNRq
-11. FLAIR downloaded to `search_warrants_model/*.pt`
+11. FLAIR downloaded to `search_warrants_model/*.pt` (final-model-20210429.pt et seq. have multiple types of objects to get.)
 
 
 ### here's an example RECAP page w/o any downloaded docs.
