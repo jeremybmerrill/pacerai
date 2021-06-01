@@ -18,6 +18,7 @@ from torch.utils.data import TensorDataset, DataLoader, RandomSampler, Sequentia
 from transformers import BertTokenizer
 from transformers import BertForSequenceClassification, AdamW, BertConfig
 import requests
+from sqlalchemy import create_engine
 
 # from keras.preprocessing.sequence import pad_sequences
 
@@ -31,10 +32,12 @@ DAYS_BACK = 7
 log = logging.getLogger(__name__)
 log.setLevel(logging.INFO)
 
+ENGINE = create_engine(environ.get("LIVE_DATABASE_URL"))
+
 
 class NamedEntityRecognizer:
     def __init__(self, model_path):
-        fetch.ensure_model_exists(
+        fetch.ensure_models_exist(
             model_path.replace("/tmp/pacerporcupine/", "").strip("/")
         )
         self.ner_model = SequenceTagger.load(model_path)
@@ -135,7 +138,59 @@ class Classifier:
         return dataframe_of_texts
 
 
-def alert(start_date=None):
+def get_search_warrant_metadata_from_courtlistener():
+    pass
+
+
+def get_search_warrant_metadata_from_pacer_rss(start_date="2021-05-10"):
+    return pd.read_sql(
+        """
+        select * from rss_docket_entries where document_type ilike '%%warrant%%' and pub_date > %(start_date)s;
+        """,
+        ENGINE,
+        params={"start_date": start_date},
+    )
+
+
+def alert_based_on_pacer_rss(start_date=None):
+    start_date = start_date or (datetime.today() - timedelta(days=7)).strftime(
+        "%m/%d/%Y"
+    )
+
+    docs_df = get_search_warrant_metadata_from_pacer_rss(start_date)
+
+    print("found {} possible search warrants".format(docs_df.shape[0]))
+    docs_df["to_classify"] = docs_df.case_name + " " + docs_df.document_type
+
+    # predict
+    casename_shortdesc_classifier = Classifier(
+        "/tmp/pacerporcupine/models/classifier/casename_shortdesc_model/"
+    )
+    docs_df = casename_shortdesc_classifier.predict(docs_df, "to_classify")
+    search_warrants = docs_df[docs_df["predicted_class"] == 1].copy()
+    print(
+        "of which, {} are search warrants according to the model".format(
+            search_warrants.shape[0]
+        )
+    )
+
+    # categorize
+    ner = NamedEntityRecognizer(
+        "/tmp/pacerporcupine/models/flairner/final-model-20210601.pt"
+    )
+    # TODO: clean this up...
+    search_warrants["caseName"] = search_warrants.case_name
+    search_warrants["court_id"] = search_warrants.court  # rename this in main DB?
+    search_warrants["absolute_url"] = search_warrants.guid  # rename this in main DB?
+    search_warrants["description"] = search_warrants.case_name.replace(
+        "USA v.", "Search/Seizure Warrant Returned Executed on 8/5/2020 for"
+    )
+    category_cases = classify_cases_by_searched_object_category(ner, search_warrants)
+    alert_to_log(category_cases, "search warrants from PACER RSS")
+    alert_to_slack(category_cases, "search warrants from PACER RSS")
+
+
+def alert_from_courtlistener_api(start_date=None):
     casename_desc_classifier = Classifier(
         join(
             dirname(__file__),
@@ -170,13 +225,19 @@ def alert(start_date=None):
         )
     )
     category_cases = classify_cases_by_searched_object_category(ner, search_warrants)
-    alert_to_log(category_cases)
-    alert_to_slack(category_cases)
+    alert_to_log(category_cases, "search warrants from the CourtListener API")
+    alert_to_slack(category_cases, "search warrants from the CourtListener API")
     return {"okee": "dokee"}
 
 
-def alert_to_slack(category_cases):
+def alert_to_slack(category_cases, intro=None):
     if environ.get("SLACKWH"):
+        if intro:
+            requests.post(
+                environ.get("SLACKWH"),
+                data=json.dumps({"text": intro}),
+                headers={"Content-Type": "application/json"},
+            )
         for i, category in enumerate(category_cases.keys()):
             cases = category_cases[
                 category
@@ -191,7 +252,9 @@ def alert_to_slack(category_cases):
             )
 
 
-def alert_to_log(category_cases):
+def alert_to_log(category_cases, intro=None):
+    if intro:
+        print(intro)
     for i, category in enumerate(category_cases.keys()):
         cases = category_cases[category]  # a dict of case names to case names + URLs
         print(category)
@@ -203,10 +266,19 @@ def alert_to_log(category_cases):
             print("")
 
 
-def classify_cases_by_searched_object_category(ner, search_warrants):
+def classify_cases_by_searched_object_category(ner, search_warrants_df):
+    """
+    depends on the following columns in sthe search_warrants_df dataframe:
+        - description (for classification)
+        - caseName, only for printing
+        - court_id, only for printing
+        - absolute_url, only for printing
+    """
     category_cases = {}
 
-    for i, doc in tqdm(search_warrants.iterrows(), total=search_warrants.shape[0]):
+    for i, doc in tqdm(
+        search_warrants_df.iterrows(), total=search_warrants_df.shape[0]
+    ):
         if len(doc["description"]) == 0:
             log.warn(
                 "blank description: {}".format(
@@ -253,4 +325,4 @@ def classify_cases_by_searched_object_category(ner, search_warrants):
 
 
 if __name__ == "__main__":
-    alert()
+    alert_based_on_pacer_rss()
