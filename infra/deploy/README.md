@@ -29,4 +29,3 @@ as usual:
 `bash deploy/deploy.sh` 
 
 - upload .env to the web server with correct values set, including the database credentials (which are output from `terraform apply`)
-- create the DB schema with `psql $DB_URL_WHATEVER_THAT_IS < hearkenmodels/schema.sql`
