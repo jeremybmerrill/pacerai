@@ -48,6 +48,10 @@ with open("ner_search_warrant_objects.conll", "w") as f:
         tags = eg_to_tags(eg)
         # do something with the tags here
         for tok, tag in zip(eg["tokens"], tags):
+            if tag[0] == "L": # spacy produces BILUO tags. Flair supports BIOES tags. ugh.
+                tag = "E" + tag[1:]
+            if tag[0] == "U":
+                tag = "S" + tag[1:]
             f.write("{}\t{}\n".format(tok["text"], tag))
         f.write("\n")
 
@@ -68,6 +72,10 @@ with open(
                     continue
                 tags = eg_to_tags(eg)
                 for tok, tag in zip(eg["tokens"], tags):
+                    if tag[0] == "L": # spacy produces BILUO tags. Flair supports BIOES tags. ugh.
+                        tag = "E" + tag[1:]
+                    if tag[0] == "U":
+                        tag = "S" + tag[1:]                    
                     f.write("{}\t{}\n".format(tok["text"], tag))
                 f.write("\n")
 
