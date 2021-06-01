@@ -24,7 +24,15 @@ Subprojects:
 10. BERT: https://colab.research.google.com/drive/1AsvDvSuGx-N3XoDLGuqG7MnszVuBNKyv#scrollTo=uhvt_y-4gKjP (depends on custom run_ner.py in this directory here)
     FLAIR: https://colab.research.google.com/drive/1bK5lsugjEX6X4QdGFmeA4KglUPQaRuPh#scrollTo=79q5hRTtHNRq
 11. FLAIR downloaded to `search_warrants_model/*.pt` (final-model-20210429.pt et seq. have multiple types of objects to get.)
+12. Went back and classified my training data into 10 or so classes. (https://docs.google.com/spreadsheets/d/1F6sL4tSxDdISYDZEYVLtYBINlCoZIvQoxKKt_OA3TVU/edit#gid=1185262046), then added that back into the CONLL-formatted training data for flair in convert_prodigy_annots.py and re-trained the FLAIR model to get final-model-20210429.pt.
+13. Went back to step 1/2 and added a bunch of non-search warrant documents (10 per district court overall, 10 per district court with US as a party). Same GDoc. http://localhost:8888/notebooks/search-warrant-or-not%20training%20data%20generation.ipynb#
+14. Went back to step 1/2 and added a bunch of case names from the RSS DB (10 each matching "warrant" and 10 overall per district)
 
 
 ### here's an example RECAP page w/o any downloaded docs.
 https://www.courtlistener.com/docket/14901901/search-warrant/
+
+
+# To run the alerters locally:
+
+` pacerporcupine # python -m pacerporcupine.courtlistener_search_warrant_alerter.alert` (it's gotta be run in the pacerporcupine folder)
