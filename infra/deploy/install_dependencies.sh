@@ -13,6 +13,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable courtlistener_search_warrant_alerter.service
 sudo systemctl start courtlistener_search_warrant_alerter.service
 sudo systemctl enable courtlistener_search_warrant_alerter.timer
+sudo systemctl start courtlistener_search_warrant_alerter.timer
 
 
 # setup server
