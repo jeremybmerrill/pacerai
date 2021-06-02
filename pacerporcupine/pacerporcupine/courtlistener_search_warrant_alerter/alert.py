@@ -28,7 +28,7 @@ from pacerporcupine.models import fetch
 MAX_DESCRIPTION_LENGTH = 64
 my_device = device("cpu")
 
-DAYS_BACK = 7
+DAYS_BACK = 3
 log = logging.getLogger(__name__)
 log.setLevel(logging.INFO)
 
