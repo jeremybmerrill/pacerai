@@ -104,6 +104,11 @@ def find_search_warrant_documents_by_keyword(
         n=n,
         filed_after=filed_after,
         available_only=available_only,
+    ) + search_for_docs(
+        q="seizure warrant",
+        n=n,
+        filed_after=filed_after,
+        available_only=available_only,
     )
 
 
