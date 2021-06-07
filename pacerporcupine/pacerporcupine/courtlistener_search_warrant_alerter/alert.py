@@ -200,7 +200,7 @@ def alert_from_courtlistener_api(start_date=None):
     ner = NamedEntityRecognizer(
         join(
             dirname(__file__),
-            "/tmp/pacerporcupine/models/flairner/final-model-20210429.pt",
+            "/tmp/pacerporcupine/models/flairner/final-model-20210601.pt",
         )
     )
 
@@ -212,6 +212,9 @@ def alert_from_courtlistener_api(start_date=None):
         n=500, filed_after=start_date, available_only=False
     )
     docs_df = pd.DataFrame(docs)
+    docs_df[
+        "absolute_url"
+    ] = "https://www.courtlistener.com" + docs_df.absolute_url.astype("str")
 
     log.info("found {} possible search warrants".format(docs_df.shape[0]))
     docs_df["to_classify"] = docs_df.caseName + " " + docs_df.description
@@ -280,11 +283,7 @@ def classify_cases_by_searched_object_category(ner, search_warrants_df):
         search_warrants_df.iterrows(), total=search_warrants_df.shape[0]
     ):
         if len(doc["description"]) == 0:
-            log.warn(
-                "blank description: {}".format(
-                    "https://www.courtlistener.org" + doc["absolute_url"]
-                )
-            )
+            log.warn("blank description: {}".format(doc["absolute_url"]))
         sentence = Sentence(doc["description"])
         ner.ner_model.predict(sentence)
         sentence_entities = sentence.get_spans("ner")
@@ -294,28 +293,20 @@ def classify_cases_by_searched_object_category(ner, search_warrants_df):
                 category = entity.tag
                 if category[:2] == "L-":  # entity continuations
                     continue
-                case_string = "- {}    {}".format(doc["caseName"], doc["court_id"])
+                case_string = "- {}    *{}*".format(doc["caseName"], doc["court_id"])
                 if (
                     thing_searched.replace(" ", "").replace(",", "").lower()
                     not in doc["caseName"].replace(" ", "").replace(",", "").lower()
                 ):
                     case_string += "\n  " + thing_searched
-                case_string_with_url = (
-                    case_string
-                    + "\n  "
-                    + "https://www.courtlistener.com{}".format(doc["absolute_url"])
-                )
+                case_string_with_url = case_string + "\n  " + doc["absolute_url"]
 
                 category_cases[category] = category_cases.get(category, {})
                 if case_string not in category_cases[category]:
                     category_cases[category][case_string] = case_string_with_url
         else:
-            case_string = "- {}    {}".format(doc["caseName"], doc["court_id"])
-            case_string_with_url = (
-                case_string
-                + "\n  "
-                + "https://www.courtlistener.com{}".format(doc["absolute_url"])
-            )
+            case_string = "- {}    *{}*".format(doc["caseName"], doc["court_id"])
+            case_string_with_url = case_string + "\n  " + doc["absolute_url"]
 
             category = "no category detected"
             category_cases[category] = category_cases.get(category, {})
@@ -325,4 +316,5 @@ def classify_cases_by_searched_object_category(ner, search_warrants_df):
 
 
 if __name__ == "__main__":
-    alert_based_on_pacer_rss()
+    alert_from_courtlistener_api()
+    # alert_based_on_pacer_rss()
