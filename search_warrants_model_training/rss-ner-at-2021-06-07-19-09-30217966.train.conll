@@ -1,0 +1,1585 @@
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+One	O
+(1)	O
+U.S.	B-phone
+Priority	I-phone
+Mail	I-phone
+Package	I-phone
+Bearing	I-phone
+the	I-phone
+Printed	I-phone
+Address	I-phone
+of	I-phone
+Ken	I-phone
+Cruz,	I-phone
+PO	I-phone
+Box	I-phone
+7008,	I-phone
+Agat,	I-phone
+GU	I-phone
+96928	I-phone
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+511	B-address
+E	I-address
+North	I-address
+Street	I-address
+Waukesha	I-address
+WI	I-address
+53188	I-address
+mail	I-address
+box	I-address
+number	I-address
+129,	I-address
+133,	I-address
+142	I-address
+
+USA	O
+v.	O
+1998	B-car
+Mercedes	I-car
+Benz	I-car
+ML	I-car
+WI	I-car
+plate	I-car
+QVD25	I-car
+2007	I-car
+Mercury	I-car
+Mariner	I-car
+WI	I-car
+plate	I-car
+AFH980	I-car
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+USPS	B-package
+Parcel	I-package
+950550663731110023983	I-package
+
+USA	O
+v.	O
+USPS	B-package
+Priority	I-package
+Mail	I-package
+Express	I-package
+Envelope	I-package
+
+USA	O
+v.	O
+N51W34917	B-address
+Wisconsin	I-address
+Avenue	I-address
+Waukesha	I-address
+WI	I-address
+53609	I-address
+free	I-address
+standing	I-address
+mailbox	I-address
+labeled	I-address
+4,	I-address
+5,	I-address
+8,	I-address
+9	I-address
+
+USA	O
+v.	O
+USPS	B-package
+Priority	I-package
+Mail	I-package
+Express	I-package
+Envelope	I-package
+
+USA	O
+v.	O
+N51W34917	B-address
+Wisconsin	I-address
+Avenue	I-address
+Waukesha	I-address
+WI	I-address
+53609	I-address
+free	I-address
+standing	I-address
+mailbox	I-address
+labeled	I-address
+4,	I-address
+5,	I-address
+8,	I-address
+9	I-address
+
+USA	O
+v.	O
+USPS	B-package
+Parcel	I-package
+tracking	I-package
+number	I-package
+EL	I-package
+479	I-package
+342	I-package
+861	I-package
+originating	I-package
+from	I-package
+Milwaukee,	I-package
+WI	I-package
+
+USA	O
+v.	O
+Subject	B-package
+Parcel	I-package
+
+USA	O
+v.	O
+The	B-address
+location	I-address
+more	I-address
+particularly	I-address
+described	I-address
+in	I-address
+Attachments	I-address
+A	I-address
+and	I-address
+A1	I-address
+et	I-address
+al	I-address
+
+USA	O
+v.	O
+Mathis	O
+
+USA	O
+v.	O
+The	B-address
+location	I-address
+more	I-address
+particularly	I-address
+described	I-address
+in	I-address
+Attachments	I-address
+A	I-address
+and	I-address
+A1	I-address
+et	I-address
+al	I-address
+
+USA	O
+v.	O
+The	B-address
+location	I-address
+more	I-address
+particularly	I-address
+described	I-address
+in	I-address
+Attachments	I-address
+A	I-address
+and	I-address
+A1	I-address
+et	I-address
+al	I-address
+
+USA	O
+v.	O
+The	B-address
+location	I-address
+more	I-address
+particularly	I-address
+described	I-address
+in	I-address
+Attachments	I-address
+A	I-address
+and	I-address
+A1	I-address
+et	I-address
+al	I-address
+
+USA	O
+v.	O
+The	B-address
+location	I-address
+more	I-address
+particularly	I-address
+described	I-address
+in	I-address
+Attachments	I-address
+A	I-address
+and	I-address
+A1	I-address
+et	I-address
+al	I-address
+
+USA	O
+v.	O
+The	B-address
+location	I-address
+more	I-address
+particularly	I-address
+described	I-address
+in	I-address
+Attachments	I-address
+A	I-address
+and	I-address
+A1	I-address
+et	I-address
+al	I-address
+
+USA	O
+v.	O
+Cell	B-phone
+Phones	I-phone
+and	O
+Computers	B-electronic devices other than phones
+
+USA	O
+v.	O
+Charcoal	B-phone
+Apple	I-phone
+iPhone,	I-phone
+et	O
+al	O
+
+USA	O
+v.	O
+Search	B-online account
+of	I-online account
+Facebook	I-online account
+
+USA	O
+v.	O
+U.S.	B-package
+Postal	I-package
+Service	I-package
+Priority	I-package
+Mail	I-package
+Express	I-package
+Parcel	I-package
+
+USA	O
+v.	O
+Information	B-online account
+
+USA	O
+v.	O
+In	O
+Re:	O
+All	B-money
+funds	I-money
+up	I-money
+to	I-money
+&#036;100,030.00	I-money
+from	I-money
+account	I-money
+number	I-money
+7303991,	I-money
+at	I-money
+Toronto	I-money
+Dominion	I-money
+Bank	I-money
+in	I-money
+Canada	I-money
+
+United	O
+States	O
+of	O
+America	O
+v.	O
+&#036;17,761.00,	B-money
+More	I-money
+or	I-money
+Less,	I-money
+in	I-money
+United	I-money
+States	I-money
+Currency	I-money
+
+USA	O
+v.	O
+Williams	O
+et	O
+al	O
+
+USA	O
+v.	O
+Cohen	O
+
+USA	O
+v.	O
+In	O
+Re:	O
+Motorola	B-phone
+Telephone	I-phone
+with	I-phone
+White	I-phone
+Back	I-phone
+
+USA	O
+v.	O
+Fiore	O
+et	O
+al	O
+
+USA	O
+v.	O
+Morgan	O
+et	O
+al.	O
+
+United	O
+States	O
+of	O
+America	O
+v.	O
+&#036;17,761.00,	B-money
+More	I-money
+or	I-money
+Less,	I-money
+in	I-money
+United	I-money
+States	I-money
+Currency	I-money
+
+USA	O
+v.	O
+Sealed	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+Black	B-phone
+TCL	I-phone
+TracFone	I-phone
+IMEI:	O
+015423008543388	O
+assigned	O
+Warwick	O
+Police	O
+property	O
+number	O
+20-1416-PR-C	O
+
+USA	O
+v.	O
+In	O
+the	O
+Matter	O
+of	O
+the	O
+Search	O
+of	O
+Black	B-phone
+TCL	I-phone
+TracFone	I-phone
+
+USA	O
+v.	O
+In	O
+the	O
+Matter	O
+of	O
+the	O
+Search	O
+of	O
+Black	B-phone
+LG	I-phone
+TracFone	I-phone
+
+USA	O
+v.	O
+White	B-phone
+iPhone	I-phone
+with	I-phone
+gray	I-phone
+and	I-phone
+blue	I-phone
+case	I-phone
+seized	O
+4/3/21,	O
+and	O
+White	B-phone
+iPhone	I-phone
+with	I-phone
+blue	I-phone
+case	I-phone
+seized	O
+4/2/21	O
+
+USA	O
+v.	O
+Black	B-phone
+TCL	I-phone
+TracFone	I-phone
+assigned	I-phone
+Warwick	I-phone
+Police	I-phone
+property	I-phone
+number	I-phone
+20-1416-PR-D	I-phone
+
+USA	O
+v.	O
+In	O
+the	O
+Matter	O
+of	O
+the	O
+Search	O
+of	O
+Black	B-phone
+LG	I-phone
+TracFone	I-phone
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+Warrant	O
+by	O
+Telephone	O
+or	O
+Other	O
+Reliable	O
+Electronic	O
+Means	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+Seizure	O
+Warrant	O
+
+USA	O
+v.	O
+SEALED	O
+
+United	O
+States	O
+of	O
+America	O
+v.	O
+The	O
+Real	O
+Property	O
+and	O
+Premises	O
+Located	O
+At	O
+64	B-address
+McCully	I-address
+Avenue,	I-address
+Staten	I-address
+Island,	I-address
+New	I-address
+York	I-address
+10306,	I-address
+and	O
+All	O
+Proceed	O
+Traceable	O
+Thereto	O
+et	O
+al	O
+
+USA	O
+v.	O
+Balzano	O
+et	O
+al	O
+
+USA	O
+v.	O
+Faltine	O
+et	O
+al	O
+
+USA	O
+v.	O
+Novogorodsky	O
+et	O
+al	O
+
+USA	O
+v.	O
+Nunez	O
+
+USA	O
+v.	O
+Sterritt,	O
+Jr.,	O
+et.	O
+al.	O
+
+USA	O
+v.	O
+Del	O
+Pozo	O
+et	O
+al	O
+
+USA	O
+v.	O
+Discala	O
+et	O
+al	O
+
+USA	O
+v.	O
+Sterritt,	O
+Jr.,	O
+et.	O
+al.	O
+
+USA	O
+v.	O
+Russo	O
+et	O
+al	O
+
+USA	O
+v.	O
+Auerbach	O
+
+USA	O
+v.	O
+Parnis	O
+et	O
+al	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+Kik	B-online account
+account	I-online account
+lesttat123	I-online account
+
+USA	O
+v.	O
+&#036;115,500.00	B-money
+US	I-money
+Currency	I-money
+
+USA	O
+v.	O
+Suppressed	O
+
+USA	O
+v.	O
+Suppressed	O
+
+USA	O
+v.	O
+Suppressed	O
+
+USA	O
+v.	O
+Suppressed	O
+
+USA	O
+v.	O
+Suppressed	O
+
+USA	O
+v.	O
+Suppressed	O
+
+USA	O
+v.	O
+Cellular	B-phone
+Telephone	I-phone
+
+USA	O
+v.	O
+Suppressed	O
+
+USA	O
+v.	O
+Suppressed	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Tracking	O
+Warrant	O
+
+USA	O
+v.	O
+Tracking	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Information	B-phone records
+associated	I-phone records
+with	I-phone records
+cell	I-phone records
+phone	I-phone records
+numbers	I-phone records
+(616)	I-phone records
+655-3515	I-phone records
+and	I-phone records
+(616)	I-phone records
+329-7652	I-phone records
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+15346	B-address
+S.	I-address
+Seminole	I-address
+Drive,	I-address
+Olathe,	I-address
+Kansas	I-address
+
+USA	O
+v.	O
+United	B-package
+States	I-package
+Postal	I-package
+Service	I-package
+Priority	I-package
+Mail	I-package
+Parcel	I-package
+
+USA	O
+v.	O
+Cellular	B-phone
+Telephone	I-phone
+
+USA	O
+v.	O
+LG	B-phone
+Cell	I-phone
+Phone	I-phone
+and	O
+Samsung	B-phone
+Cell	I-phone
+Phone	I-phone
+
+USA	O
+v.	O
+Sealed	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Sealed	O
+Search	O
+and	O
+Seizure	O
+Warrant	O
+w/Appl	O
+and	O
+Order	O
+for	O
+Non-Disclosure	O
+
+USA	O
+v.	O
+Pen	B-phone records
+Register	I-phone records
+/Trap	B-phone records
+&	I-phone records
+Trace	I-phone records
+Order	I-phone records
+
+USA	O
+v.	O
+Pen	B-phone records
+Register	I-phone records
+and	O
+Trap	B-phone records
+and	I-phone records
+Trace	I-phone records
+Device	I-phone records
+
+USA	O
+v.	O
+Sealed	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+SEALED	O
+Anticipatory	O
+Search	O
+and	O
+Seizure	O
+Warrant	O
+
+USA	O
+v.	O
+Pen	B-phone records
+Registers	I-phone records
+and	O
+Trap	B-phone records
+and	I-phone records
+Trace	I-phone records
+Devices	I-phone records
+
+USA	O
+v.	O
+Sealed	B-phone records
+Pen	I-phone records
+Register/Trap	I-phone records
+&	I-phone records
+Trace	I-phone records
+
+USA	O
+v.	O
+Pen	B-phone records
+Register	I-phone records
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Long	O
+
+USA	O
+v.	O
+Long	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+121	B-address
+Ash	I-address
+Road,	I-address
+Basalt,	I-address
+Colorado	I-address
+et	O
+al	O
+
+USA	O
+v.	O
+&#036;200,000.00	B-money
+in	I-money
+United	I-money
+States	I-money
+Currency	I-money
+
+USA	O
+v.	O
+Blue	B-phone
+i-Phone	I-phone
+Seizure	O
+No.	O
+2021250400189501-0005	O
+
+USA	O
+v.	O
+Black	B-phone
+LG	I-phone
+Cell	I-phone
+Phone	I-phone
+IMEI:	O
+355041617542076	O
+FP&amp;F	O
+No.	O
+2021565800005801	O
+(&quot;Target	O
+Device&quot;)	O
+
+USA	O
+v.	O
+Black	B-phone
+Apple	I-phone
+i-phone	I-phone
+Seizure	O
+No.	O
+2021250400120301-003	O
+(&quot;Target	O
+Device&quot;)	O
+
+USA	O
+v.	O
+Samsung	B-phone
+(Black)	I-phone
+Model:	I-phone
+Galaxy	I-phone
+A20	I-phone
+IMEI:	O
+355720105906105	O
+
+USA	O
+v.	O
+Blue	B-phone
+Motorola	I-phone
+cellular	I-phone
+phone	I-phone
+Seized	O
+as	O
+FP&amp;F	O
+No.	O
+2021565800007104	O
+Item	O
+002	O
+(&quot;Target	O
+Device	O
+&#035;1&quot;)	O
+
+USA	O
+v.	O
+Blue	B-phone
+Motorola	I-phone
+Cell	I-phone
+Phone	I-phone
+Seized	O
+as	O
+FP&amp;F	O
+No.	O
+2021250300057901,	O
+Item	O
+0005	O
+(&quot;Target	O
+Device	O
+&#035;2&quot;)	O
+
+Application	O
+by	O
+the	O
+United	O
+States	O
+for	O
+a	O
+Search	O
+Warrant	O
+for	O
+Five	B-online account
+Accounts	I-online account
+for	O
+Investigation	O
+of	O
+18:1028	O
+and	O
+Other	O
+Offenses	O
+
+Application	O
+by	O
+the	O
+United	O
+States	O
+for	O
+a	O
+Search	O
+Warrant	O
+for	O
+an	B-electronic devices other than phones
+Electronic	I-electronic devices other than phones
+Device	I-electronic devices other than phones
+for	O
+Investigation	O
+of	O
+21	O
+U.S.C.841(a)(1),	O
+843(b),	O
+and	O
+846	O
+
+United	O
+States	O
+of	O
+America	O
+v.	O
+81,122.00	B-money
+in	I-money
+U.S.	I-money
+Currency	I-money
+et	I-money
+al	I-money
+
+United	O
+States	O
+of	O
+America	O
+v.	O
+&#036;49,900.00	B-money
+in	I-money
+U.S.	I-money
+Currency	I-money
+
+United	O
+States	O
+of	O
+America	O
+v.	O
+One	B-car
+2020	I-car
+Mercedes	I-car
+Benz	I-car
+E53	I-car
+AMG	I-car
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+SEARCH	O
+WARRANT	O
+
+USA	O
+v.	O
+SEARCH	O
+WARRANT	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+SEARCH	O
+WARRANT	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+SEARCH	O
+WARRANT	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+of	O
+USPS	B-package
+Priority	I-package
+Mail	I-package
+parcel	I-package
+9403	I-package
+3102	I-package
+0088	I-package
+3197	I-package
+3845	I-package
+59	I-package
+addressed	I-package
+to	I-package
+&quot;Marlene	I-package
+Black,	I-package
+PO	I-package
+Box	I-package
+34064,	I-package
+Napakiak,	I-package
+AK	I-package
+99634-0064&quot;	I-package
+
+USA	O
+v.	O
+Search	O
+of	O
+Priority	B-package
+Mail	I-package
+parcel	I-package
+9403	I-package
+3102	I-package
+0088	I-package
+2107	I-package
+3251	I-package
+87	I-package
+addressed	I-package
+to	I-package
+&quot;Edna	I-package
+Williams,	I-package
+PO	I-package
+Box	I-package
+495,	I-package
+Kotzebue	I-package
+AK	I-package
+99752-0495&quot;	I-package
+
+USA	O
+v.	O
+Search	O
+of	O
+Priority	B-package
+Mail	I-package
+Express	I-package
+Parcel	I-package
+EM043566481US	I-package
+addressed	I-package
+to	I-package
+&quot;Larissa	I-package
+Cole,	I-package
+4031	I-package
+Truro	I-package
+Dr.,	I-package
+Anchorage,	I-package
+AK	I-package
+99507&quot;	I-package
+
+USA	O
+v.	O
+Search	O
+of	O
+USPS	B-package
+Priority	I-package
+Mail	I-package
+parcel	I-package
+9403	I-package
+3102	I-package
+0082	I-package
+8132	I-package
+3485	I-package
+93	I-package
+addressed	I-package
+to	I-package
+&quot;Michael	I-package
+Black,	I-package
+PO	I-package
+Box	I-package
+34074,	I-package
+Napakiak,	I-package
+AK	I-package
+99634-0074&quot;	I-package
+
+USA	O
+v.	O
+Search	O
+of	O
+USPS	B-package
+Priority	I-package
+Express	I-package
+Parcel	I-package
+EL295288523US	I-package
+addressed	I-package
+to	I-package
+to	I-package
+&quot;Tonya	I-package
+Brooks	I-package
+3016	I-package
+W.	I-package
+34th	I-package
+Ave	I-package
+Apt&#035;12	I-package
+Anchorage,	I-package
+AK	I-package
+99517&quot;	I-package
+
+United	O
+States	O
+of	O
+America	O
+v.	O
+&#036;29,000.00	B-money
+in	I-money
+United	I-money
+States	I-money
+Currency	I-money
+
+USA	O
+v.	O
+White	B-phone
+iPhone	I-phone
+with	I-phone
+gray	I-phone
+and	I-phone
+blue	I-phone
+case	I-phone
+seized	O
+4/3/21,	O
+and	O
+White	B-phone
+iPhone	I-phone
+with	I-phone
+blue	I-phone
+case	I-phone
+seized	O
+4/2/21	O
+
+USA	O
+v.	O
+United	B-package
+States	I-package
+Postal	I-package
+Service	I-package
+Priority	I-package
+Mail	I-package
+Express	I-package
+Parcel	I-package
+bearing	I-package
+label	I-package
+numbers:	I-package
+EJ	I-package
+504	I-package
+029	I-package
+666	I-package
+US	I-package
+
+USA	O
+v.	O
+SELECT	O
+ELECTRONIC	B-electronic devices other than phones
+DEVICES,	I-electronic devices other than phones
+STORAGE	B-address
+UNITS,	I-address
+AND	O
+DATABASES	B-online account
+CURRENTLY	O
+IN	O
+THE	O
+POSSESSION	O
+OF	O
+THE	O
+UNITED	O
+STATES	O
+POSTAL	O
+INSPECTION	O
+SERVICE	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+IN	O
+THE	O
+MATTER	O
+OF	O
+THE	O
+SEARCH	O
+OF	O
+ONE	O
+CELL	O
+PHONE,	O
+AN	O
+IPHONE	B-phone
+MODEL	I-phone
+XR,	I-phone
+SERIAL	O
+NUMBR	O
+C8PXKAWKKXKN,	O
+CURRENTLY	O
+LOCATED	O
+AT	O
+EVIDENCE	O
+FACILITY	O
+IN	O
+WASHINGTON,	O
+D.C.,	O
+UNDER	O
+RULE	O
+41	O
+
+USA	O
+v.	O
+In	O
+the	O
+Matter	O
+of	O
+the	O
+Search	O
+of	O
+Black	B-phone
+TCL	I-phone
+TracFone	I-phone
+
+USA	O
+v.	O
+In	O
+the	O
+Matter	O
+of	O
+the	O
+Search	O
+of	O
+Black	B-phone
+TCL	I-phone
+TracFone	I-phone
+
+USA	O
+v.	O
+In	O
+the	O
+Matter	O
+of	O
+the	O
+Search	O
+of	O
+Black	B-phone
+TCL	I-phone
+
+USA	O
+v.	O
+In	O
+the	O
+Matter	O
+of	O
+the	O
+Search	O
+of	O
+Black	B-phone
+LG	I-phone
+TracFone	I-phone
+
+USA	O
+v.	O
+In	O
+the	O
+Matter	O
+of	O
+the	O
+Search	O
+of	O
+Black	B-phone
+BLU	I-phone
+TracFone	I-phone
+bearing	I-phone
+a	I-phone
+NE	I-phone
+Patriots	I-phone
+sticker	I-phone
+
+USA	O
+v.	O
+In	O
+the	O
+matter	O
+of	O
+the	O
+search	O
+of	O
+Apple	B-electronic devices other than phones
+MacBook	I-electronic devices other than phones
+Pro,	I-electronic devices other than phones
+model	O
+A1398,	O
+laptop	O
+computer,	O
+serial	O
+No.	O
+C02MNCS0FD56	O
+
+USA	O
+v.	O
+In	O
+the	O
+matter	O
+of	O
+the	O
+search	O
+of	O
+Apple	B-electronic devices other than phones
+MacBook	I-electronic devices other than phones
+Pro,	I-electronic devices other than phones
+model	O
+A1278,	O
+laptop	O
+computer,	O
+serial	O
+no.	O
+C17HT297DTY3	O
+
+USA	O
+v.	O
+In	O
+the	O
+matter	O
+of	O
+the	O
+search	O
+of	O
+Apple	B-phone
+iPhone	I-phone
+Touch	I-phone
+ID	I-phone
+cellular	I-phone
+telephone,	I-phone
+model	O
+A1864,	O
+iPhone	O
+8	O
+Plus,	O
+black	O
+with	O
+clear	O
+Otterbox	O
+case,	O
+in	O
+custody	O
+of	O
+ATF	O
+(more	O
+fully	O
+described	O
+in	O
+Attachment	O
+A)	O
+
+USA	O
+v.	O
+Facebook	B-online account
+User	I-online account
+ID	I-online account
+alicia.tangeman	I-online account
+
+USA	O
+v.	O
+Blue	O
+Android	O
+Samsung	O
+Galaxy	O
+A50	O
+with	O
+Serial	O
+No.:	O
+35601013150735	O
+
+USA	O
+v.	O
+Black	B-phone
+TCL	I-phone
+TracFone	I-phone
+IMEI:	O
+015423008543388	O
+assigned	O
+Warwick	O
+Police	O
+property	O
+number	O
+20-1416-PR-C	O
+
+USA	O
+v.	O
+Black	B-phone
+Alcatel	I-phone
+TracFone	I-phone
+assigned	O
+Warwick	O
+Police	O
+property	O
+number	O
+20-1416-PR-E	O
+
+USA	O
+v.	O
+A	O
+SILVER	B-car
+2004	I-car
+CHRYSLER	I-car
+TOWN	I-car
+AND	I-car
+COUNTRY	I-car
+BEARING	I-car
+MARYLAND	I-car
+LICENSE	I-car
+PLATE	I-car
+4EG9203	I-car
+AND	I-car
+VIN	I-car
+2C8GP54L84R603669	I-car
+
+USA	O
+v.	O
+4227	B-address
+JENIFER	I-address
+STREET	I-address
+N.W.	I-address
+WASHINGTON,	I-address
+D.C.,	I-address
+AND	O
+ELECTRONIC	B-electronic devices other than phones
+DEVICES	I-electronic devices other than phones
+THEREIN	I-electronic devices other than phones
+UNDER	O
+RULE	O
+41	O
+

@@ -1,0 +1,523 @@
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+One	O
+(1)	O
+U.S.	B-package
+Mail	I-package
+Package	I-package
+Bearing	I-package
+the	I-package
+Printed	I-package
+Address	I-package
+of	I-package
+Jesse	I-package
+Quinata,	I-package
+&#035;11	I-package
+Lourdes	I-package
+St.,	I-package
+Baza	I-package
+Gardens	I-package
+Yona,	I-package
+GU	I-package
+96915	I-package
+(Quinata	I-package
+2)	I-package
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+One	O
+(1)	O
+U.S.	B-package
+Priority	I-package
+Mail	I-package
+Package	I-package
+Bearing	I-package
+the	I-package
+Printed	I-package
+Address	I-package
+of	I-package
+Nico	I-package
+Nasty,	I-package
+PO	I-package
+Box	I-package
+11370,	I-package
+Yigo,	I-package
+Guam	I-package
+96929	I-package
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+1125	B-address
+Lawndale	I-address
+Dr,	I-address
+Menasha,	I-address
+WI	I-address
+54952	I-address
+
+USA	O
+v.	O
+Electronic	B-electronic devices other than phones
+Devices,	I-electronic devices other than phones
+Items	O
+1-2	O
+
+USA	O
+v.	O
+USPS	B-package
+Priority	I-package
+Mail	I-package
+Parcel	I-package
+
+USA	O
+v.	O
+US	B-package
+Mail	I-package
+Parcel	I-package
+
+USA	O
+v.	O
+The	B-address
+location	I-address
+more	I-address
+particularly	I-address
+described	I-address
+in	I-address
+Attachments	I-address
+A	I-address
+and	I-address
+A1	I-address
+et	I-address
+al	I-address
+
+USA	O
+v.	O
+The	B-address
+location	I-address
+more	I-address
+particularly	I-address
+described	I-address
+in	I-address
+Attachments	I-address
+A	I-address
+and	I-address
+A1	I-address
+et	I-address
+al	I-address
+
+USA	O
+v.	O
+Subject	B-address
+Premises	I-address
+
+USA	O
+v.	O
+The	B-address
+location	I-address
+more	I-address
+particularly	I-address
+described	I-address
+in	I-address
+Attachments	I-address
+A	I-address
+and	I-address
+A1	I-address
+et	I-address
+al	I-address
+
+USA	O
+v.	O
+In	O
+Re:	O
+Motorola	B-phone
+Telephone	I-phone
+with	I-phone
+White	I-phone
+Back	I-phone
+
+USA	O
+v.	O
+Oquendo	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+In	O
+Re:	O
+Room	B-address
+271	I-address
+of	I-address
+the	I-address
+Double	I-address
+Tree	I-address
+Hotel,	I-address
+located	I-address
+at	I-address
+870	I-address
+Williston	I-address
+Road,	I-address
+South	I-address
+Burlington,	I-address
+Vermont	I-address
+
+USA	O
+v.	O
+SEARCH	O
+WARRANT	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+-	O
+DNA	B-biological materials
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+In	O
+the	O
+Matter	O
+of	O
+the	O
+Search	O
+of	O
+Black	B-phone
+TCL	I-phone
+TracFone	I-phone
+
+USA	O
+v.	O
+MORALES,	O
+ET.	O
+AL.,	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+Khalil	O
+
+USA	O
+v.	O
+Yang	O
+et	O
+al	O
+
+USA	O
+v.	O
+Suppressed	O
+
+USA	O
+v.	O
+Suppressed	O
+
+USA	O
+v.	O
+Suppressed	O
+
+USA	O
+v.	O
+Suppressed	O
+
+USA	O
+v.	O
+Suppressed	O
+
+USA	O
+v.	O
+Suppressed	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Tracking	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Motorola	B-phone
+Cellular	I-phone
+Telephone,	I-phone
+Model:	O
+XT205DL,	O
+IMEI:	O
+351638111780997	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+Cellular	B-phone
+Telephone	I-phone
+1	I-phone
+
+USA	O
+v.	O
+SEALED	O
+Pen	B-phone records
+Register	I-phone records
+Device,	I-phone records
+Enhanced	B-phone records
+Caller	I-phone records
+ID	I-phone records
+Special	I-phone records
+Calling	I-phone records
+Feature,	I-phone records
+and	O
+Trap	B-phone records
+and	I-phone records
+Trace	I-phone records
+Device	I-phone records
+
+USA	O
+v.	O
+Sealed	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Pen	B-phone records
+Register	I-phone records
+Device	I-phone records
+and	O
+Trap	B-phone records
+and	I-phone records
+Trace	I-phone records
+Device	I-phone records
+
+Application	O
+by	O
+the	O
+United	O
+States	O
+for	O
+a	O
+Search	O
+Warrant	O
+for	O
+One	B-online account
+Account	I-online account
+for	O
+Investigation	O
+of	O
+21	O
+U.S.C.	O
+841(a)	O
+and	O
+Other	O
+Offenses	O
+
+USA	O
+v.	O
+SEARCH	O
+WARRANT	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+SEARCH	O
+WARRANT	O
+
+USA	O
+v.	O
+SEARCH	O
+WARRANT	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+of	O
+USPS	B-package
+Priority	I-package
+Mail	I-package
+parcel	I-package
+9403	I-package
+3102	I-package
+0079	I-package
+3136	I-package
+1311	I-package
+54	I-package
+addressed	I-package
+to	I-package
+&quot;Daniel	I-package
+Tommy,	I-package
+PO	I-package
+Box	I-package
+5524,	I-package
+Newtok,	I-package
+AK	I-package
+99559-5524&quot;	I-package
+
+USA	O
+v.	O
+LG	B-phone
+cellular	I-phone
+telephone,	I-phone
+model	O
+LGL52VL,	O
+serial	O
+number	O
+603CYAS0128576	O
+(more	O
+fully	O
+described	O
+in	O
+Attachment	O
+A)	O
+
+USA	O
+v.	O
+IN	O
+THE	O
+MATTER	O
+OF	O
+THE	O
+SEARCH	O
+OF	O
+THE	O
+PREMISES	O
+LOCATED	O
+AT	O
+56/58	B-address
+FISK	I-address
+STREET,	I-address
+PROVIDENCE,	I-address
+RI;	I-address
+BASEMENT	I-address
+LEVEL	I-address
+APARTMENT	I-address
+
+USA	O
+v.	O
+In	O
+the	O
+Matter	O
+of	O
+the	O
+Search	O
+of	O
+Black	B-phone
+TCL	I-phone
+TracFone	I-phone
+
+USA	O
+v.	O
+In	O
+the	O
+Matter	O
+of	O
+the	O
+Search	O
+of	O
+Black	B-phone
+TCL	I-phone
+TracFone	I-phone
+
+USA	O
+v.	O
+In	O
+the	O
+Matter	O
+of	O
+the	O
+Search	O
+of	O
+Black	B-phone
+TCL	I-phone
+phone	I-phone
+found	O
+in	O
+trunk	O
+
+USA	O
+v.	O
+In	O
+the	O
+matter	O
+of	O
+the	O
+search	O
+of:	O
+Apple	B-electronic devices other than phones
+MacBook	I-electronic devices other than phones
+Pro,	I-electronic devices other than phones
+model	O
+A1502,	O
+laptop	O
+computer,	O
+serial	O
+No.	O
+C02P90CUFVH7	O
+
