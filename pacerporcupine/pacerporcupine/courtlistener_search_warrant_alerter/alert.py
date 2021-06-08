@@ -176,7 +176,7 @@ def alert_based_on_pacer_rss(start_date=None):
 
     # categorize
     ner = NamedEntityRecognizer(
-        "/tmp/pacerporcupine/models/flairner/final-model-20210601.pt"
+        "/tmp/pacerporcupine/models/flairner/final-model-20210607.pt"
     )
     # TODO: clean this up...
     search_warrants["caseName"] = search_warrants.case_name
@@ -200,7 +200,7 @@ def alert_from_courtlistener_api(start_date=None):
     ner = NamedEntityRecognizer(
         join(
             dirname(__file__),
-            "/tmp/pacerporcupine/models/flairner/final-model-20210601.pt",
+            "/tmp/pacerporcupine/models/flairner/final-model-20210607.pt",
         )
     )
 
