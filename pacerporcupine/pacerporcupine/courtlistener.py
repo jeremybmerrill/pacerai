@@ -6,21 +6,15 @@ convenience functions for interacting with the courtlistener API
 
 from os import environ, makedirs
 from os.path import join, exists, dirname
-import requests
-from urllib.parse import urlencode
 import logging
 import csv
+
+import requests
+from urllib.parse import urlencode
 import pandas as pd
-from dotenv import load_dotenv
-import logging
 
-
-load_dotenv()
 
 log = logging.getLogger(__name__)
-
-
-API_KEY = environ.get("API_KEY")
 
 
 def get_pdf(recap_filepath_local, type_of_file="other"):
@@ -47,6 +41,8 @@ def get_search_warrant_pdf(recap_filepath_local):
 # def get_docket_entries():
 #     "https://www.courtlistener.com/api/rest/v3/docket-entries/?docket__id=XXX"
 def search_recap_with_url(url):
+    API_KEY = environ.get("API_KEY")
+
     log.debug(url)
     return requests.get(
         url,

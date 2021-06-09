@@ -1,0 +1,6 @@
+pandas
+flair
+transformers[torch]
+requests
+sqlalchemy
+psycopg2-binary

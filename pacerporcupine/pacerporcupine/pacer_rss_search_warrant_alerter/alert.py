@@ -1,12 +1,13 @@
 from datetime import datetime, timedelta
 import logging
 from os.path import join, dirname
+from os import environ
 
+from dotenv import load_dotenv
 from tqdm import tqdm
 import pandas as pd
-from dotenv import load_dotenv
+from sqlalchemy import create_engine
 
-from pacerporcupine import courtlistener
 from pacerporcupine.models.classifier import Classifier
 from pacerporcupine.models.named_entity_recognizer import NamedEntityRecognizer
 from pacerporcupine.alerter import alert_to_log, alert_to_slack
@@ -17,52 +18,55 @@ DAYS_BACK = 3
 log = logging.getLogger(__name__)
 log.setLevel(logging.INFO)
 
-
-def get_search_warrant_metadata_from_courtlistener():
-    pass
+ENGINE = create_engine(environ.get("LIVE_DATABASE_URL"))
 
 
-def alert_from_courtlistener_api(start_date=None):
-    casename_desc_classifier = Classifier(
-        join(
-            dirname(__file__),
-            "/tmp/pacerporcupine/models/classifier/casename_desc_model/",
-        )
-    )
-    ner = NamedEntityRecognizer(
-        join(
-            dirname(__file__),
-            "/tmp/pacerporcupine/models/flairner/final-model-20210607.pt",
-        )
+def get_search_warrant_metadata_from_pacer_rss(start_date="2021-05-10"):
+    return pd.read_sql(
+        """
+        select * from rss_docket_entries where document_type ilike '%%warrant%%' and pub_date > %(start_date)s;
+        """,
+        ENGINE,
+        params={"start_date": start_date},
     )
 
+
+def alert_based_on_pacer_rss(start_date=None):
     start_date = start_date or (datetime.today() - timedelta(days=7)).strftime(
         "%m/%d/%Y"
     )
 
-    docs = courtlistener.find_search_warrant_documents_by_description(
-        n=500, filed_after=start_date, available_only=False
-    )
-    docs_df = pd.DataFrame(docs)
-    docs_df[
-        "absolute_url"
-    ] = "https://www.courtlistener.com" + docs_df.absolute_url.astype("str")
+    docs_df = get_search_warrant_metadata_from_pacer_rss(start_date)
 
-    log.info("found {} possible search warrants".format(docs_df.shape[0]))
-    docs_df["to_classify"] = docs_df.caseName + " " + docs_df.description
-    docs_df = casename_desc_classifier.predict(
-        docs_df, "description"
-    )  # TODO: why does "description" work better than "to_classify"???
-    search_warrants = docs_df[docs_df["predicted_class"] == 1]
-    log.info(
+    print("found {} possible search warrants".format(docs_df.shape[0]))
+    docs_df["to_classify"] = docs_df.case_name + " " + docs_df.document_type
+
+    # predict
+    casename_shortdesc_classifier = Classifier(
+        "/tmp/pacerporcupine/models/classifier/casename_shortdesc_model/"
+    )
+    docs_df = casename_shortdesc_classifier.predict(docs_df, "to_classify")
+    search_warrants = docs_df[docs_df["predicted_class"] == 1].copy()
+    print(
         "of which, {} are search warrants according to the model".format(
             search_warrants.shape[0]
         )
     )
+
+    # categorize
+    ner = NamedEntityRecognizer(
+        "/tmp/pacerporcupine/models/flairner/final-model-20210607.pt"
+    )
+    # TODO: clean this up...
+    search_warrants["caseName"] = search_warrants.case_name
+    search_warrants["court_id"] = search_warrants.court  # rename this in main DB?
+    search_warrants["absolute_url"] = search_warrants.guid  # rename this in main DB?
+    search_warrants["description"] = search_warrants.case_name.replace(
+        "USA v.", "Search/Seizure Warrant Returned Executed on 8/5/2020 for"
+    )
     category_cases = classify_cases_by_searched_object_category(ner, search_warrants)
-    alert_to_log(category_cases, "search warrants from the CourtListener API")
-    alert_to_slack(category_cases, "search warrants from the CourtListener API")
-    return {"okee": "dokee"}
+    alert_to_log(category_cases, "search warrants from PACER RSS")
+    alert_to_slack(category_cases, "search warrants from PACER RSS")
 
 
 def classify_cases_by_searched_object_category(ner, search_warrants_df):
@@ -111,4 +115,4 @@ def classify_cases_by_searched_object_category(ner, search_warrants_df):
 
 
 if __name__ == "__main__":
-    alert_from_courtlistener_api()
+    alert_based_on_pacer_rss()
