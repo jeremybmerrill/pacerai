@@ -10,10 +10,10 @@ cd /home/ubuntu/tow-pacer/infra/deploy/
 # setup services
 ls /home/ubuntu/tow-pacer/infra/deploy/services | xargs -i sudo install -m u+rw,ugo-x,go-w,go+r services/"{}" "/lib/systemd/system/{}"
 sudo systemctl daemon-reload
-sudo systemctl enable courtlistener_search_warrant_alerter.service
-sudo systemctl start courtlistener_search_warrant_alerter.service
-sudo systemctl enable courtlistener_search_warrant_alerter.timer
-sudo systemctl start courtlistener_search_warrant_alerter.timer
+sudo systemctl enable search_warrant_alerter.service
+sudo systemctl start search_warrant_alerter.service
+sudo systemctl enable search_warrant_alerter.timer
+sudo systemctl start search_warrant_alerter.timer
 
 
 # setup server

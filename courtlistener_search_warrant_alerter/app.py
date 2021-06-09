@@ -1,5 +1,7 @@
 from pacerporcupine.courtlistener_search_warrant_alerter.alert import (
     alert_from_courtlistener_api,
+)
+from pacerporcupine.pacer_rss_search_warrant_alerter.alert import (
     alert_based_on_pacer_rss,
 )
 
