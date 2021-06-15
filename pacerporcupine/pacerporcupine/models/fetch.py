@@ -19,7 +19,7 @@ MODEL_FILES = [
     "models/classifier/casename_shortdesc_model/special_tokens_map.json",
     "models/classifier/casename_shortdesc_model/tokenizer_config.json",
     "models/classifier/casename_shortdesc_model/vocab.txt",
-    "models/flairner/final-model-20210607.pt",
+    "models/flairner/best-model.pt",
 ]
 
 

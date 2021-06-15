@@ -32,7 +32,7 @@ def alert_from_courtlistener_api(start_date=None):
     ner = NamedEntityRecognizer(
         join(
             dirname(__file__),
-            "/tmp/pacerporcupine/models/flairner/final-model-20210607.pt",
+            "/tmp/pacerporcupine/models/flairner/best-model.pt",
         )
     )
 
@@ -61,7 +61,8 @@ def alert_from_courtlistener_api(start_date=None):
     )
     category_cases = classify_cases_by_searched_object_category(ner, search_warrants)
     alert_to_log(category_cases, "search warrants from the CourtListener API")
-    alert_to_slack(category_cases, "search warrants from the CourtListener API")
+    if not environ.get("SKIP_SLACK"):
+        alert_to_slack(category_cases, "search warrants from the CourtListener API")
     return {"okee": "dokee"}
 
 

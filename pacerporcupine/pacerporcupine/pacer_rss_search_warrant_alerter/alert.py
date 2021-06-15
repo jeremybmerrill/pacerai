@@ -54,19 +54,20 @@ def alert_based_on_pacer_rss(start_date=None):
     )
 
     # categorize
-    ner = NamedEntityRecognizer(
-        "/tmp/pacerporcupine/models/flairner/final-model-20210607.pt"
-    )
+    ner = NamedEntityRecognizer("/tmp/pacerporcupine/models/flairner/best-model.pt")
     # TODO: clean this up...
     search_warrants["caseName"] = search_warrants.case_name
     search_warrants["court_id"] = search_warrants.court  # rename this in main DB?
-    search_warrants["absolute_url"] = search_warrants.guid  # rename this in main DB?
+    search_warrants["absolute_url"] = search_warrants.guid.split("&")[
+        0
+    ]  # rename this in main DB?
     search_warrants["description"] = search_warrants.case_name.replace(
         "USA v.", "Search/Seizure Warrant Returned Executed on 8/5/2020 for"
     )
     category_cases = classify_cases_by_searched_object_category(ner, search_warrants)
     alert_to_log(category_cases, "search warrants from PACER RSS")
-    alert_to_slack(category_cases, "search warrants from PACER RSS")
+    if not environ.get("SKIP_SLACK"):
+        alert_to_slack(category_cases, "search warrants from PACER RSS")
 
 
 def classify_cases_by_searched_object_category(ner, search_warrants_df):
