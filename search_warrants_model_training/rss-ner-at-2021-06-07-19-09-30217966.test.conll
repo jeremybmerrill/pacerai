@@ -4,159 +4,50 @@ SEALED	O
 
 USA	O
 v.	O
-SEALED	O
-
-USA	O
-v.	O
-SEALED	O
-
-USA	O
-v.	O
 One	O
 (1)	O
-U.S.	B-package
-Mail	I-package
-Package	I-package
-Bearing	I-package
-the	I-package
-Printed	I-package
-Address	I-package
-of	I-package
-Jesse	I-package
-Quinata,	I-package
-&#035;11	I-package
-Lourdes	I-package
-St.,	I-package
-Baza	I-package
-Gardens	I-package
-Yona,	I-package
-GU	I-package
-96915	I-package
-(Quinata	I-package
-2)	I-package
+U.S.	B-PACKAGE
+Priority	I-PACKAGE
+Mail	I-PACKAGE
+Package	I-PACKAGE
+Bearing	I-PACKAGE
+the	I-PACKAGE
+Printed	I-PACKAGE
+Address	I-PACKAGE
+of	I-PACKAGE
+Kyle	I-PACKAGE
+Castro,	I-PACKAGE
+275G	I-PACKAGE
+Farenholt	I-PACKAGE
+Ave	I-PACKAGE
+Suite	I-PACKAGE
+443,	I-PACKAGE
+Tamuning,	I-PACKAGE
+GU	I-PACKAGE
+96913	E-PACKAGE
 
 USA	O
 v.	O
-SEALED	O
+USPS	B-PACKAGE
+Priority	I-PACKAGE
+Mail	I-PACKAGE
+Express	I-PACKAGE
+Envelope	E-PACKAGE
 
 USA	O
 v.	O
-SEALED	O
-
-USA	O
-v.	O
-One	O
-(1)	O
-U.S.	B-package
-Priority	I-package
-Mail	I-package
-Package	I-package
-Bearing	I-package
-the	I-package
-Printed	I-package
-Address	I-package
-of	I-package
-Nico	I-package
-Nasty,	I-package
-PO	I-package
-Box	I-package
-11370,	I-package
-Yigo,	I-package
-Guam	I-package
-96929	I-package
-
-USA	O
-v.	O
-SEALED	O
-
-USA	O
-v.	O
-1125	B-address
-Lawndale	I-address
-Dr,	I-address
-Menasha,	I-address
-WI	I-address
-54952	I-address
-
-USA	O
-v.	O
-Electronic	B-electronic devices other than phones
-Devices,	I-electronic devices other than phones
-Items	O
-1-2	O
-
-USA	O
-v.	O
-USPS	B-package
-Priority	I-package
-Mail	I-package
-Parcel	I-package
-
-USA	O
-v.	O
-US	B-package
-Mail	I-package
-Parcel	I-package
-
-USA	O
-v.	O
-The	B-address
-location	I-address
-more	I-address
-particularly	I-address
-described	I-address
-in	I-address
-Attachments	I-address
-A	I-address
-and	I-address
-A1	I-address
-et	I-address
-al	I-address
-
-USA	O
-v.	O
-The	B-address
-location	I-address
-more	I-address
-particularly	I-address
-described	I-address
-in	I-address
-Attachments	I-address
-A	I-address
-and	I-address
-A1	I-address
-et	I-address
-al	I-address
-
-USA	O
-v.	O
-Subject	B-address
-Premises	I-address
-
-USA	O
-v.	O
-The	B-address
-location	I-address
-more	I-address
-particularly	I-address
-described	I-address
-in	I-address
-Attachments	I-address
-A	I-address
-and	I-address
-A1	I-address
-et	I-address
-al	I-address
+Subject	B-ADDRESS
+Premises	E-ADDRESS
 
 USA	O
 v.	O
 In	O
 Re:	O
-Motorola	B-phone
-Telephone	I-phone
-with	I-phone
-White	I-phone
-Back	I-phone
+Motorola	B-PHONE
+Telephone	I-PHONE
+with	I-PHONE
+White	I-PHONE
+Back	E-PHONE
 
 USA	O
 v.	O
@@ -164,44 +55,10 @@ Oquendo	O
 
 USA	O
 v.	O
-SEALED	O
-
-USA	O
-v.	O
-In	O
-Re:	O
-Room	B-address
-271	I-address
-of	I-address
-the	I-address
-Double	I-address
-Tree	I-address
-Hotel,	I-address
-located	I-address
-at	I-address
-870	I-address
-Williston	I-address
-Road,	I-address
-South	I-address
-Burlington,	I-address
-Vermont	I-address
-
-USA	O
-v.	O
-SEARCH	O
-WARRANT	O
-
-USA	O
-v.	O
 Search	O
 Warrant	O
 -	O
-DNA	B-biological materials
-
-USA	O
-v.	O
-Search	O
-Warrant	O
+DNA	B-BIOLOGICAL_MATERIALS
 
 USA	O
 v.	O
@@ -212,15 +69,9 @@ of	O
 the	O
 Search	O
 of	O
-Black	B-phone
-TCL	I-phone
-TracFone	I-phone
-
-USA	O
-v.	O
-MORALES,	O
-ET.	O
-AL.,	O
+Black	B-PHONE
+LG	I-PHONE
+TracFone	E-PHONE
 
 USA	O
 v.	O
@@ -229,42 +80,37 @@ Warrant	O
 
 USA	O
 v.	O
-Search	O
-Warrant	O
-
-USA	O
-v.	O
-SEALED	O
-
-USA	O
-v.	O
-Khalil	O
-
-USA	O
-v.	O
-Yang	O
+Balzano	O
 et	O
 al	O
 
 USA	O
 v.	O
-Suppressed	O
+IN	O
+THE	O
+MATTER	O
+OF	O
+THE	O
+SEARCH	O
+OF	O
+A	O
+2005	B-CAR
+CHEVROLET	I-CAR
+IMPALA,	E-CAR
+VIN	O
+NUMBER	O
+2G1WFS2E859371783,	O
+WITH	O
+LICENSE	O
+PLATE	O
+NUMBER	O
+FAK4768	O
 
 USA	O
 v.	O
-Suppressed	O
-
-USA	O
-v.	O
-Suppressed	O
-
-USA	O
-v.	O
-Suppressed	O
-
-USA	O
-v.	O
-Suppressed	O
+&#036;115,500.00	B-MONEY
+US	I-MONEY
+Currency	E-MONEY
 
 USA	O
 v.	O
@@ -282,19 +128,9 @@ Warrant	O
 
 USA	O
 v.	O
-Search	O
-Warrant	O
-
-USA	O
-v.	O
-Search	O
-Warrant	O
-
-USA	O
-v.	O
-Motorola	B-phone
-Cellular	I-phone
-Telephone,	I-phone
+Motorola	B-PHONE
+Cellular	I-PHONE
+Telephone,	E-PHONE
 Model:	O
 XT205DL,	O
 IMEI:	O
@@ -306,27 +142,44 @@ SEALED	O
 
 USA	O
 v.	O
-Cellular	B-phone
-Telephone	I-phone
-1	I-phone
+SEALED	O
 
 USA	O
 v.	O
-SEALED	O
-Pen	B-phone records
-Register	I-phone records
-Device,	I-phone records
-Enhanced	B-phone records
-Caller	I-phone records
-ID	I-phone records
-Special	I-phone records
-Calling	I-phone records
-Feature,	I-phone records
+15346	B-ADDRESS
+S.	I-ADDRESS
+Seminole	I-ADDRESS
+Drive,	I-ADDRESS
+Olathe,	I-ADDRESS
+Kansas	E-ADDRESS
+
+USA	O
+v.	O
+United	B-PACKAGE
+States	I-PACKAGE
+Postal	I-PACKAGE
+Service	I-PACKAGE
+Priority	I-PACKAGE
+Mail	I-PACKAGE
+Parcel	E-PACKAGE
+
+USA	O
+v.	O
+Cellular	B-PHONE
+Telephone	E-PHONE
+
+USA	O
+v.	O
+Sealed	O
+Search	O
 and	O
-Trap	B-phone records
-and	I-phone records
-Trace	I-phone records
-Device	I-phone records
+Seizure	O
+Warrant	O
+w/Appl	O
+and	O
+Order	O
+for	O
+Non-Disclosure	O
 
 USA	O
 v.	O
@@ -336,170 +189,113 @@ Warrant	O
 
 USA	O
 v.	O
-Pen	B-phone records
-Register	I-phone records
-Device	I-phone records
-and	O
-Trap	B-phone records
-and	I-phone records
-Trace	I-phone records
-Device	I-phone records
+Sealed	O
+Search	O
+Warrant	O
 
-Application	O
-by	O
-the	O
+USA	O
+v.	O
+Long	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+Search	O
+of	O
+USPS	B-PACKAGE
+Priority	I-PACKAGE
+Mail	I-PACKAGE
+parcel	I-PACKAGE
+9403	I-PACKAGE
+3102	I-PACKAGE
+0088	I-PACKAGE
+3197	I-PACKAGE
+3845	I-PACKAGE
+59	I-PACKAGE
+addressed	I-PACKAGE
+to	I-PACKAGE
+&quot;Marlene	I-PACKAGE
+Black,	I-PACKAGE
+PO	I-PACKAGE
+Box	I-PACKAGE
+34064,	I-PACKAGE
+Napakiak,	I-PACKAGE
+AK	I-PACKAGE
+99634-0064&quot;	E-PACKAGE
+
+USA	O
+v.	O
+Search	O
+of	O
+USPS	B-PACKAGE
+Priority	I-PACKAGE
+Mail	I-PACKAGE
+parcel	I-PACKAGE
+9403	I-PACKAGE
+3102	I-PACKAGE
+0082	I-PACKAGE
+8132	I-PACKAGE
+3485	I-PACKAGE
+93	I-PACKAGE
+addressed	I-PACKAGE
+to	I-PACKAGE
+&quot;Michael	I-PACKAGE
+Black,	I-PACKAGE
+PO	I-PACKAGE
+Box	I-PACKAGE
+34074,	I-PACKAGE
+Napakiak,	I-PACKAGE
+AK	I-PACKAGE
+99634-0074&quot;	E-PACKAGE
+
 United	O
 States	O
-for	O
-a	O
-Search	O
-Warrant	O
-for	O
-One	B-online account
-Account	I-online account
-for	O
-Investigation	O
 of	O
-21	O
-U.S.C.	O
-841(a)	O
+America	O
+v.	O
+&#036;29,000.00	B-MONEY
+in	I-MONEY
+United	I-MONEY
+States	I-MONEY
+Currency	E-MONEY
+
+USA	O
+v.	O
+White	B-PHONE
+iPhone	I-PHONE
+with	I-PHONE
+gray	I-PHONE
+and	I-PHONE
+blue	I-PHONE
+case	E-PHONE
+seized	O
+4/3/21,	O
 and	O
-Other	O
-Offenses	O
-
-USA	O
-v.	O
-SEARCH	O
-WARRANT	O
-
-USA	O
-v.	O
-SEALED	O
-
-USA	O
-v.	O
-SEARCH	O
-WARRANT	O
-
-USA	O
-v.	O
-SEARCH	O
-WARRANT	O
-
-USA	O
-v.	O
-SEALED	O
-
-USA	O
-v.	O
-Search	O
-Warrant	O
-
-USA	O
-v.	O
-Search	O
-of	O
-USPS	B-package
-Priority	I-package
-Mail	I-package
-parcel	I-package
-9403	I-package
-3102	I-package
-0079	I-package
-3136	I-package
-1311	I-package
-54	I-package
-addressed	I-package
-to	I-package
-&quot;Daniel	I-package
-Tommy,	I-package
-PO	I-package
-Box	I-package
-5524,	I-package
-Newtok,	I-package
-AK	I-package
-99559-5524&quot;	I-package
-
-USA	O
-v.	O
-LG	B-phone
-cellular	I-phone
-telephone,	I-phone
-model	O
-LGL52VL,	O
-serial	O
-number	O
-603CYAS0128576	O
-(more	O
-fully	O
-described	O
-in	O
-Attachment	O
-A)	O
-
-USA	O
-v.	O
-IN	O
-THE	O
-MATTER	O
-OF	O
-THE	O
-SEARCH	O
-OF	O
-THE	O
-PREMISES	O
-LOCATED	O
-AT	O
-56/58	B-address
-FISK	I-address
-STREET,	I-address
-PROVIDENCE,	I-address
-RI;	I-address
-BASEMENT	I-address
-LEVEL	I-address
-APARTMENT	I-address
-
-USA	O
-v.	O
-In	O
-the	O
-Matter	O
-of	O
-the	O
-Search	O
-of	O
-Black	B-phone
-TCL	I-phone
-TracFone	I-phone
-
-USA	O
-v.	O
-In	O
-the	O
-Matter	O
-of	O
-the	O
-Search	O
-of	O
-Black	B-phone
-TCL	I-phone
-TracFone	I-phone
-
-USA	O
-v.	O
-In	O
-the	O
-Matter	O
-of	O
-the	O
-Search	O
-of	O
-Black	B-phone
-TCL	I-phone
-phone	I-phone
-found	O
-in	O
-trunk	O
+White	B-PHONE
+iPhone	I-PHONE
+with	I-PHONE
+blue	I-PHONE
+case	E-PHONE
+seized	O
+4/2/21	O
 
 USA	O
 v.	O
@@ -509,15 +305,86 @@ matter	O
 of	O
 the	O
 search	O
-of:	O
-Apple	B-electronic devices other than phones
-MacBook	I-electronic devices other than phones
-Pro,	I-electronic devices other than phones
+of	O
+Apple	B-ELECTRONIC_DEVICES_OTHER_THAN_PHONES
+MacBook	I-ELECTRONIC_DEVICES_OTHER_THAN_PHONES
+Pro,	E-ELECTRONIC_DEVICES_OTHER_THAN_PHONES
 model	O
-A1502,	O
+A1398,	O
 laptop	O
 computer,	O
 serial	O
 No.	O
-C02P90CUFVH7	O
+C02MNCS0FD56	O
+
+USA	O
+v.	O
+In	O
+the	O
+matter	O
+of	O
+the	O
+search	O
+of	O
+Apple	B-PHONE
+iPhone	I-PHONE
+(Face	I-PHONE
+ID)	I-PHONE
+cellular	I-PHONE
+telephone,	E-PHONE
+model	O
+A1984,	O
+iPhone	B-PHONE
+XR,	E-PHONE
+black,	O
+with	O
+yellow	O
+Otterbox	O
+case,	O
+in	O
+custody	O
+of	O
+ATF	O
+(more	O
+fully	O
+described	O
+in	O
+Attachment	O
+A)	O
+
+USA	O
+v.	O
+Blue	O
+Android	B-PHONE
+Samsung	I-PHONE
+Galaxy	I-PHONE
+A50	E-PHONE
+with	O
+Serial	O
+No.:	O
+35601013150735	O
+
+USA	O
+v.	O
+Black	B-PHONE
+TCL	I-PHONE
+TracFone	E-PHONE
+assigned	O
+Warwick	O
+Police	O
+property	O
+number	O
+20-1416-PR-D	O
+
+USA	O
+v.	O
+Black	B-PHONE
+Alcatel	I-PHONE
+TracFone	E-PHONE
+assigned	O
+Warwick	O
+Police	O
+property	O
+number	O
+20-1416-PR-E	O
 

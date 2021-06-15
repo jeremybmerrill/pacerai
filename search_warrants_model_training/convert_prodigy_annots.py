@@ -16,6 +16,11 @@ with open('searched-object-classifications.csv', 'r') as f:
     object_classifications = {row["token"]: row["label"].upper().replace(" ", "_") for row in csv.DictReader(f)}
 
 
+test_proportion = 0.1
+dev_proportion = 0.1
+train_proportion = 1.0 - test_proportion - dev_proportion
+test_proportion_inverse = 1.0 - test_proportion
+
 def eg_to_tags(eg):
     doc = nlp(eg["text"])
     entities = [
@@ -49,12 +54,11 @@ with open("ner_search_warrant_objects.conll", "w") as f:
         # do something with the tags here
         for tok, tag in zip(eg["tokens"], tags):
             if tag[0] == "L": # spacy produces BILUO tags. Flair supports BIOES tags. ugh.
-                tag = "E" + tag[1:]
+                tag = "E" + tag[1:] # Flair might not care about End/Last though. So let's try with I-
             if tag[0] == "U":
                 tag = "S" + tag[1:]
             f.write("{}\t{}\n".format(tok["text"], tag))
         f.write("\n")
-
 
 with open(
     "ner_search_warrant_objects.train.conll", "w"
@@ -67,9 +71,32 @@ with open(
         ) as ftest:  # FLAIR input format
             for eg in examples:
                 r = random()
-                f = ftrain if r < 0.6 else (fdev if r < 0.8 else ftest)
+                f = ftrain if r < train_proportion else (fdev if r < test_proportion_inverse else ftest)
                 if eg["answer"] != "accept" or "spans" not in eg:
                     continue
+
+                # data augmentation, so to speak
+                if "as to" in ' '.join([t["text"] for t in eg["tokens"]]):
+                    tags = eg_to_tags(eg)
+                    prev_token_text = None
+                    have_seen_as_to = False
+                    for tok, tag in zip(eg["tokens"], tags):
+                        if (not have_seen_as_to) and not (prev_token_text == "as" and tok["text"] == "to"):
+                            prev_token_text = tok["text"]
+                            continue
+                        elif (prev_token_text == "as" and tok["text"] == "to"):
+                            have_seen_as_to = True
+                            f.write("{}\t{}\n".format("USA", "O"))
+                            f.write("{}\t{}\n".format("v.", "O"))
+                        else:
+                            if tag[0] == "L": # spacy produces BILUO tags. Flair supports BIOES tags. ugh.
+                                tag = "E" + tag[1:]
+                            if tag[0] == "U":
+                                tag = "S" + tag[1:]
+                            f.write("{}\t{}\n".format(tok["text"], tag))
+                    f.write("\n")
+
+
                 tags = eg_to_tags(eg)
                 for tok, tag in zip(eg["tokens"], tags):
                     if tag[0] == "L": # spacy produces BILUO tags. Flair supports BIOES tags. ugh.
@@ -80,51 +107,51 @@ with open(
                 f.write("\n")
 
 
-with open(
-    "ner_search_warrant_objects.train.csv", "w"
-) as ftrain:  # not an output format anything can actually use
-    with open(
-        "ner_search_warrant_objects.dev.csv", "w"
-    ) as fdev:  # not an output format anything can actually use
-        with open(
-            "ner_search_warrant_objects.test.csv", "w"
-        ) as ftest:  # not an output format anything can actually use
-            csvtrain = csv.writer(ftrain)
-            csvdev = csv.writer(fdev)
-            csvtest = csv.writer(ftest)
-            csvtrain.writerow(["token", "label"])
-            csvdev.writerow(["token", "label"])
-            csvtest.writerow(["token", "label"])
+# with open(
+#     "ner_search_warrant_objects.train.csv", "w"
+# ) as ftrain:  # not an output format anything can actually use
+#     with open(
+#         "ner_search_warrant_objects.dev.csv", "w"
+#     ) as fdev:  # not an output format anything can actually use
+#         with open(
+#             "ner_search_warrant_objects.test.csv", "w"
+#         ) as ftest:  # not an output format anything can actually use
+#             csvtrain = csv.writer(ftrain)
+#             csvdev = csv.writer(fdev)
+#             csvtest = csv.writer(ftest)
+#             csvtrain.writerow(["token", "label"])
+#             csvdev.writerow(["token", "label"])
+#             csvtest.writerow(["token", "label"])
 
-            for eg in examples:
-                r = random()
-                f = csvtrain if r < 0.6 else (csvdev if r < 0.8 else csvtest)
-                if eg["answer"] != "accept" or "spans" not in eg:
-                    continue
-                tags = eg_to_tags(eg)
-                for tok, tag in zip(eg["tokens"], tags):
-                    f.writerow([tok["text"], tag])
-                f.writerow([])
+#             for eg in examples:
+#                 r = random()
+#                 f = csvtrain if r < train_proportion else (csvdev if r < test_proportion_inverse else csvtest)
+#                 if eg["answer"] != "accept" or "spans" not in eg:
+#                     continue
+#                 tags = eg_to_tags(eg)
+#                 for tok, tag in zip(eg["tokens"], tags):
+#                     f.writerow([tok["text"], tag])
+#                 f.writerow([])
 
-with open(
-    "ner_search_warrant_objects.train.json", "w"
-) as ftrain:  # huggingface transformers bert input format
-    with open(
-        "ner_search_warrant_objects.dev.json", "w"
-    ) as fdev:  # huggingface transformers bert input format
-        with open(
-            "ner_search_warrant_objects.test.json", "w"
-        ) as ftest:  # huggingface transformers bert input format
+# with open(
+#     "ner_search_warrant_objects.train.json", "w"
+# ) as ftrain:  # huggingface transformers bert input format
+#     with open(
+#         "ner_search_warrant_objects.dev.json", "w"
+#     ) as fdev:  # huggingface transformers bert input format
+#         with open(
+#             "ner_search_warrant_objects.test.json", "w"
+#         ) as ftest:  # huggingface transformers bert input format
 
-            for eg in examples:
-                r = random()
-                f = ftrain if r < 0.8 else (fdev if r < 1 else ftest)
-                if eg["answer"] != "accept" or "spans" not in eg:
-                    continue
-                tags = eg_to_tags(eg)
-                f.write(
-                    json.dumps(
-                        {"tokens": [tok["text"] for tok in eg["tokens"]], "tags": tags}
-                    )
-                    + "\n"
-                )
+#             for eg in examples:
+#                 r = random()
+#                 f = ftrain if r < test_proportion_inverse else (fdev if r < 1 else ftest)
+#                 if eg["answer"] != "accept" or "spans" not in eg:
+#                     continue
+#                 tags = eg_to_tags(eg)
+#                 f.write(
+#                     json.dumps(
+#                         {"tokens": [tok["text"] for tok in eg["tokens"]], "tags": tags}
+#                     )
+#                     + "\n"
+#                 )
