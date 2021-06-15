@@ -1,5 +1,0 @@
-aws-psycopg2
-sqlalchemy==1.4
-python-dotenv
-bs4
-feedparser
