@@ -1,39 +1,112 @@
 from os import environ
 import requests
 import json
+from html import unescape
+from itertools import groupby
+from operator import itemgetter
 
 
-def alert_to_slack(category_cases, intro=None):
+def case_object_to_slarkdown(
+    case_name=None, absolute_url=None, thing_searched=None, court_id=None, category=None
+):
+    case_name = unescape(case_name)
+    if (
+        thing_searched
+        and thing_searched.replace(" ", "").replace(",", "").lower()
+        in case_name.replace(" ", "").replace(",", "").lower()
+    ):
+        thing_searched = ""
+    return f"<{absolute_url}|{case_name}> {thing_searched}\n"
+
+
+def case_object_to_text(
+    case_name=None, absolute_url=None, thing_searched=None, court_id=None, category=None
+):
+    case_name = unescape(case_name)
+    if (
+        not thing_searched
+        or thing_searched.replace(" ", "").replace(",", "").lower()
+        in case_name.replace(" ", "").replace(",", "").lower()
+    ):
+        thing_searched = ""
+    else:
+        thing_searched = "\n  " + thing_searched
+    return "- {}   {}".format(case_name, thing_searched)
+
+
+def alert_to_slack(category_case_objects, intro=None):
+    slack_blocks = []
     if environ.get("SLACKWH"):
         if intro:
-            requests.post(
-                environ.get("SLACKWH"),
-                data=json.dumps({"text": intro}),
-                headers={"Content-Type": "application/json"},
+            slack_blocks.append(
+                {
+                    "type": "section",
+                    "text": {"type": "mrkdwn", "text": f"*{intro}:*"},
+                }
             )
-        for i, category in enumerate(category_cases.keys()):
-            cases = category_cases[
-                category
-            ]  # a dict of case names to case names + URLs
-            msg = [f"*{category}*"]
-            for case in cases.values():
-                msg.append(case)
-            requests.post(
-                environ.get("SLACKWH"),
-                data=json.dumps({"text": "\n".join(msg)}),
-                headers={"Content-Type": "application/json"},
+        for category, cases in category_case_objects.items():
+
+            slack_blocks.append({"type": "divider"})
+            slack_blocks.append(
+                {
+                    "type": "section",
+                    "text": {"type": "mrkdwn", "text": f"*{category}:*"},
+                }
             )
+            cases_by_court = groupby(
+                sorted(cases.values(), key=itemgetter("court_id")),
+                key=itemgetter("court_id"),
+            )
+            for court, cases_of_court in cases_by_court:
+                cases_of_court = "• " + "\n• ".join(
+                    [case_object_to_slarkdown(**case) for case in cases_of_court]
+                )
+                slack_blocks.append(
+                    {
+                        "type": "section",
+                        "text": {
+                            "type": "mrkdwn",
+                            "text": f"*{court}:*\n\n{cases_of_court}",
+                        },
+                    }
+                )
+    send_to_slack(slack_blocks)
 
 
-def alert_to_log(category_cases, intro=None):
+def alert_to_log(category_cases_objects, intro=None):
     if intro:
         print(intro)
-    for i, category in enumerate(category_cases.keys()):
-        cases = category_cases[category]  # a dict of case names to case names + URLs
+    for i, category in enumerate(category_cases_objects.keys()):
+        cases = category_cases_objects[
+            category
+        ]  # a dict of case names to case names + URLs
         print(category)
-        for case in cases.values():
-            print(case)
+        cases_by_court = groupby(
+            sorted(cases.values(), key=itemgetter("court_id")),
+            key=itemgetter("court_id"),
+        )
+        for court, cases_of_court in cases_by_court:
+            print(court)
+            for case in cases_of_court:
+                print(case_object_to_text(**case))
         print("")
-        if i + 1 != len(category_cases.keys()):
+        if i + 1 != len(category_cases_objects.keys()):
             print("----------------------")
             print("")
+
+
+def send_to_slack(blocks, max_block_size=46):
+    for subset_of_blocks in (
+        blocks[pos : pos + max_block_size]
+        for pos in range(0, len(blocks), max_block_size)
+    ):
+        print(subset_of_blocks)
+        payload = {"blocks": subset_of_blocks}
+
+        response = requests.post(environ["SLACKWH"], json=payload)
+
+        if response.status_code != 200:
+            raise ValueError(
+                "Request to slack returned an error %s, the response is: %s"
+                % (response.status_code, response.text)
+            )

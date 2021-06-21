@@ -115,8 +115,10 @@ def search_for_docs(n=1000, **kwargs):
     """
     next_url = None
     records = []
+    first_run = True
     while len(records) <= n:
-        if len(records) == 0:
+        if first_run:
+            first_run = False
             search_result = search_recap(**kwargs)
             if "results" not in search_result:
                 print("no results in search_result", search_result)
