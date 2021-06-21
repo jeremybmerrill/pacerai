@@ -25,6 +25,7 @@ export $(cat /home/ubuntu/.env | xargs)
 sudo chmod 777 -R /home/ubuntu/tow-pacer/infra/deploy/
 pip3 install -U --user pip # default pip causes some problems
 pip3 install --user  --no-cache-dir -r /home/ubuntu/tow-pacer/courtlistener_search_warrant_alerter/requirements.txt # no-cache-dir causes some problems
+rm -rf /tmp/pacerporcupine/
 # sudo cp -rf /home/ubuntu/prevdeploy-tow-pacer/pacerporcupine/pacerporcupine/models/classifier/ /home/ubuntu/tow-pacer/pacerporcupine/pacerporcupine/models/classifier/
 # sudo cp -rf /home/ubuntu/prevdeploy-tow-pacer/pacerporcupine/pacerporcupine/models/flairner/ /home/ubuntu/tow-pacer/pacerporcupine/pacerporcupine/models/flairner/
 

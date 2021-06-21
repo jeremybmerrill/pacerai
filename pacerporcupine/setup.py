@@ -5,13 +5,6 @@ setup(
     name="pacerporcupine",
     version="0.1.0",
     packages=find_packages(),
-    # package_data={
-    #     "pacerporcupine": [
-    #         # "models/flairner/final-model-20210429.pt",
-    #         # "models/classifier/casename_desc_model/*.*",
-    #     ],
-    # },
-    # package_dir={"": "pacerporcupine"},
     url="https://github.com/jeremybmerrillname/pacerai",
     license="MIT",
     author="Jeremy merrill",

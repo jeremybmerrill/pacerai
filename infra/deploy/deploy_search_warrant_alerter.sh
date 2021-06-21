@@ -26,5 +26,5 @@ aws deploy get-deployment  --output text --region us-east-1 --deployment-id $dep
 sleep 30
 aws deploy get-deployment  --output text --region us-east-1 --deployment-id $depl | head -n 1 | rev | cut -f2 -d '	' | rev
 
-echo "To check deployment status, run 'aws deploy get-deployment --region us-east-1 --deployment-id $depl'"
+echo "To check deployment status, run 'AWS_PROFILE=$AWS_PROFILE aws deploy get-deployment --region us-east-1 --deployment-id $depl'"
 # 
