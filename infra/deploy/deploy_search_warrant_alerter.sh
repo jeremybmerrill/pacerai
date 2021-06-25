@@ -7,7 +7,7 @@ BUCKET=$APPNAME-deployment2
 DEPLOYMENT_GROUP=production
 DEPLOYARCHIVEFN=deploy-$APPNAME.tar.gz
 
-tar -cvf infra/${DEPLOYARCHIVEFN%.gz} --exclude pacerporcupine/pacerporcupine/models/classifier/ --exclude pacerporcupine/pacerporcupine/models/flairner/ courtlistener_search_warrant_alerter/* pacerporcupine/* infra/deploy/*
+tar -cvf infra/${DEPLOYARCHIVEFN%.gz} --exclude pacerporcupine/pacerporcupine/models/classifier/ --exclude pacerporcupine/pacerporcupine/models/flairner/ search_warrant_alerter/* pacerporcupine/* infra/deploy/*
 tar -rvf infra/${DEPLOYARCHIVEFN%.gz}  -C courtlistener_search_warrant_alerter appspec.yml
 gzip -f infra/${DEPLOYARCHIVEFN%.gz}
 

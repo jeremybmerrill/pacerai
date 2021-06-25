@@ -7,10 +7,12 @@ from dotenv import load_dotenv
 from tqdm import tqdm
 import pandas as pd
 from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
 from pacerporcupine.models.classifier import Classifier
 from pacerporcupine.models.named_entity_recognizer import NamedEntityRecognizer
 from pacerporcupine.alerter import alert_to_log, alert_to_slack
+from pacerporcupine.db import RSSDocketEntry, Prediction, Base
 
 load_dotenv()
 
@@ -19,19 +21,45 @@ log = logging.getLogger(__name__)
 log.setLevel(logging.INFO)
 
 ENGINE = create_engine(environ.get("LIVE_DATABASE_URL"))
+Session = sessionmaker(bind=ENGINE)
 
 
+SEARCH_WARRANT_OR_NOT_PREDICTION_TYPE = "swornot"
 def get_search_warrant_metadata_from_pacer_rss(start_date="2021-06-10"):
-    return pd.read_sql(
-        """
-        select * from rss_docket_entries where document_type ilike '%%warrant%%' and pub_date > %(start_date)s;
-        """,
-        ENGINE,
-        params={"start_date": start_date},
+    session = Session()
+
+    search_warrant_predictions = (
+        session.query(Prediction)
+        .filter(Prediction.prediction_type == SEARCH_WARRANT_OR_NOT_PREDICTION_TYPE)
+        .subquery()
     )
+    query = (
+        session.query(RSSDocketEntry)
+        .filter(RSSDocketEntry.document_type.ilike("%warrant%"))
+        .filter(RSSDocketEntry.pub_date > start_date)
+        .outerjoin(search_warrant_predictions)
+        .filter(search_warrant_predictions.c.id == None)
+    )
+    print(query.statement)
+    return pd.read_sql(query.statement, query.session.bind)
+
+
+def record_prediction(record):
+    session = Session()
+    pred = Prediction(
+        case_number=record["case_number"],
+        pub_date=record["pub_date"],
+        prediction_type=SEARCH_WARRANT_OR_NOT_PREDICTION_TYPE,
+        prediction_value=record["predicted_class"],
+    )
+
+    session.add(pred)
+    session.commit()
 
 
 def alert_based_on_pacer_rss(start_date=None):
+    Base.metadata.create_all(ENGINE)
+
     start_date = start_date or (datetime.today() - timedelta(days=DAYS_BACK)).strftime(
         "%m/%d/%Y"
     )
@@ -39,6 +67,8 @@ def alert_based_on_pacer_rss(start_date=None):
     docs_df = get_search_warrant_metadata_from_pacer_rss(start_date)
 
     print("found {} possible search warrants".format(docs_df.shape[0]))
+    if docs_df.shape[0] == 0:
+        return
     docs_df["to_classify"] = docs_df.case_name + " | " + docs_df.document_type
 
     # predict
@@ -46,6 +76,10 @@ def alert_based_on_pacer_rss(start_date=None):
         "/tmp/pacerporcupine/models/classifier/casename_shortdesc_model/"
     )
     docs_df = casename_shortdesc_classifier.predict(docs_df, "to_classify")
+    docs_df[["case_number", "pub_date", "predicted_class"]].apply(
+        record_prediction, axis=1
+    )
+
     search_warrants = docs_df[docs_df["predicted_class"] == 1].copy()
     print(
         "of which, {} are search warrants according to the model".format(
@@ -124,4 +158,6 @@ def classify_cases_by_searched_object_category(ner, search_warrants_df):
 
 
 if __name__ == "__main__":
+    Base.metadata.create_all(ENGINE)
+
     alert_based_on_pacer_rss()

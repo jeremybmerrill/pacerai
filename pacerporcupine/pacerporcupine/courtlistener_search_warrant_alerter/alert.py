@@ -14,7 +14,7 @@ from pacerporcupine.alerter import alert_to_log, alert_to_slack
 
 load_dotenv()
 
-DAYS_BACK = 4
+DAYS_BACK = 2  # because these are DATEs not DATETIMEs, looking back a single day only gets us stuff filed TODAY which isn't necessarily what we want.
 log = logging.getLogger(__name__)
 log.setLevel(logging.INFO)
 

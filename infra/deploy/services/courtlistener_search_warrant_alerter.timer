@@ -1,10 +1,12 @@
 [Unit]
-Description=Run courtlistener_search_warrant_alerter daily
+Description=Run courtlistener_search_warrant_alerter twice a day
 Requires=courtlistener_search_warrant_alerter.service
 [Timer]
 Unit=courtlistener_search_warrant_alerter.service
 OnUnitInactiveSec=1d
+OnCalendar=Mon..Fri *-*-* 14,23:00:00 # UTC
 RandomizedDelaySec=1m
-AccuracySec=1s
+AccuracySec=60s
+
 [Install]
 WantedBy=timers.target
