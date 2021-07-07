@@ -3,8 +3,10 @@ Description=Run rss_search_warrant_alerter hourly
 Requires=rss_search_warrant_alerter.service
 [Timer]
 Unit=rss_search_warrant_alerter.service
-OnUnitInactiveSec=1d
-OnCalendar=Mon..Fri *-*-* 1,2,3,14..23:00:00 # UTC. Runs until 3am UTC because that's 11pm ET which is 5pm Hawaii.
+OnCalendar=Mon..Fri *-*-* 1,2,3,14..24:00:00
+                # UTC. Runs until 3am UTC because that's 11pm ET which is 5pm Hawaii.
+OnCalendar=Sat *-*-* 0,1:00:00
+                # runs late on Fridays to catch any stragglers (since those won't be caught the next day, since it doesn't run on Saturdays ET)
 RandomizedDelaySec=1m
 AccuracySec=60s
 

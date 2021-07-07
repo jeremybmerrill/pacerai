@@ -3,8 +3,8 @@ Description=Run courtlistener_search_warrant_alerter twice a day
 Requires=courtlistener_search_warrant_alerter.service
 [Timer]
 Unit=courtlistener_search_warrant_alerter.service
-OnUnitInactiveSec=1d
-OnCalendar=Mon..Fri *-*-* 14,23:00:00 # UTC
+OnCalendar=Mon..Fri *-*-* 14,23:00:00
+                          # times are UTC
 RandomizedDelaySec=1m
 AccuracySec=60s
 
