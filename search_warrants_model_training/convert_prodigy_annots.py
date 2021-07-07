@@ -7,6 +7,9 @@ from random import random
 import csv
 import json
 
+print("you'll erase manually-edited conlls, be careful")
+return 
+
 nlp = English()
 
 db = connect()  # uses settings from your prodigy.json
@@ -45,20 +48,20 @@ with open('ner_training_data_tokens_to_classify.csv', 'w') as csvfile:
             entity_text = eg["text"][span["start"]:span["end"]]
             entity_writer.writerow([entity_text, ''])
             
-with open("ner_search_warrant_objects.conll", "w") as f:
-    for eg in examples:
-        if eg["answer"] != "accept" or "spans" not in eg:
-            continue
-        f.write("# {}".format(eg["text"]))
-        tags = eg_to_tags(eg)
-        # do something with the tags here
-        for tok, tag in zip(eg["tokens"], tags):
-            if tag[0] == "L": # spacy produces BILUO tags. Flair supports BIOES tags. ugh.
-                tag = "E" + tag[1:] # Flair might not care about End/Last though. So let's try with I-
-            if tag[0] == "U":
-                tag = "S" + tag[1:]
-            f.write("{}\t{}\n".format(tok["text"], tag))
-        f.write("\n")
+# with open("ner_search_warrant_objects.conll", "w") as f:
+#     for eg in examples:
+#         if eg["answer"] != "accept" or "spans" not in eg:
+#             continue
+#         f.write("# {}\n".format(eg["text"]))
+#         tags = eg_to_tags(eg)
+#         # do something with the tags here
+#         for tok, tag in zip(eg["tokens"], tags):
+#             if tag[0] == "L": # spacy produces BILUO tags. Flair supports BIOES tags. ugh.
+#                 tag = "E" + tag[1:] # Flair might not care about End/Last though. So let's try with I-
+#             if tag[0] == "U":
+#                 tag = "S" + tag[1:]
+#             f.write("{}\t{}\n".format(tok["text"], tag))
+#         f.write("\n")
 
 with open(
     "ner_search_warrant_objects.train.conll", "w"
@@ -93,6 +96,7 @@ with open(
                                 tag = "E" + tag[1:]
                             if tag[0] == "U":
                                 tag = "S" + tag[1:]
+                            prev_token_text = tok["text"]
                             f.write("{}\t{}\n".format(tok["text"], tag))
                     f.write("\n")
 
