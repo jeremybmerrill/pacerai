@@ -101,7 +101,7 @@ courts = [
     "wyd",
 ]
 
-
+# TODO: import from pacerporcupine.db
 Base = declarative_base()
 Session = sessionmaker(bind=engine)
 
@@ -191,7 +191,7 @@ def scrape_all_courts(event):
 for i, court in enumerate(courts):
     exec(
         """
-@app.schedule("cron({} 8-22/2 ? * MON-FRI *)")
+@app.schedule("cron({} 8-22/1 ? * MON-FRI *)")
 def scrape_{}(event):
     scrape_court("{}")
 
