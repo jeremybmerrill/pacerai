@@ -7,20 +7,24 @@ from operator import itemgetter
 
 
 def case_object_to_slarkdown(
-    case_name=None, absolute_url=None, thing_searched=None, court_id=None, category=None
+    case_name=None, absolute_url=None, thing_searched=None, court_id=None, category=None, document_type=None
 ):
     case_name = unescape(case_name)
     if (
-        thing_searched
-        and thing_searched.replace(" ", "").replace(",", "").lower()
+        not thing_searched
+        or thing_searched.replace(" ", "").replace(",", "").lower()
         in case_name.replace(" ", "").replace(",", "").lower()
     ):
         thing_searched = ""
-    return f"<{absolute_url}|{case_name}> {thing_searched}\n"
+    if document_type:
+        document_type = f"[{document_type}]"
+    else:
+        document_type = ""
+    return f"<{absolute_url}|{case_name}> {thing_searched} {document_type}\n"
 
 
 def case_object_to_text(
-    case_name=None, absolute_url=None, thing_searched=None, court_id=None, category=None
+    case_name=None, absolute_url=None, thing_searched=None, court_id=None, category=None, document_type=None
 ):
     case_name = unescape(case_name)
     if (
@@ -31,7 +35,11 @@ def case_object_to_text(
         thing_searched = ""
     else:
         thing_searched = "\n  " + thing_searched
-    return "- {}   {}".format(case_name, thing_searched)
+    if document_type:
+        document_type = f"[{document_type}]"
+    else:
+        document_type = ""        
+    return "- {}   {} {}".format(case_name, thing_searched, document_type)
 
 
 def alert_to_slack(category_case_objects, intro=None):
