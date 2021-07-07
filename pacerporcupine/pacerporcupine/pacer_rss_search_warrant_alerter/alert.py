@@ -6,7 +6,7 @@ from os import environ
 from dotenv import load_dotenv
 from tqdm import tqdm
 import pandas as pd
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, or_
 from sqlalchemy.orm import sessionmaker
 
 from pacerporcupine.models.classifier import Classifier
@@ -35,7 +35,7 @@ def get_search_warrant_metadata_from_pacer_rss(start_date="2021-06-10"):
     )
     query = (
         session.query(RSSDocketEntry)
-        .filter(RSSDocketEntry.document_type.ilike("%warrant%"))
+        .filter(or_(RSSDocketEntry.document_type.ilike("%warrant%"), RSSDocketEntry.document_type.ilike("%unseal%")))
         .filter(RSSDocketEntry.pub_date > start_date)
         .outerjoin(search_warrant_predictions)
         .filter(search_warrant_predictions.c.id == None)
@@ -45,6 +45,8 @@ def get_search_warrant_metadata_from_pacer_rss(start_date="2021-06-10"):
 
 
 def record_prediction(record):
+    if environ.get("SKIPDB"):
+        return
     session = Session()
     pred = Prediction(
         case_number=record["case_number"],
@@ -148,6 +150,7 @@ def classify_cases_by_searched_object_category(ner, search_warrants_df):
                 "court_id": doc["court_id"],
                 "absolute_url": doc["absolute_url"],
                 "category": category,
+                "document_type": doc["document_type"]
             }
 
             category_case_objects[category] = category_case_objects.get(category, {})
