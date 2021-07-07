@@ -16,15 +16,11 @@ Make a chance in hearkenmodels.tf, then type `terraform apply` in the `deploy/` 
 
 `bash deploy.sh`. It deploys your current working directory; source control (and/or CI) are up to you.
 
+AWS_DEFAULT_REGION=us-east-1 AWS_PROFILE=personal chalice deploy
+
 ## manual setup steps, taken once:
 
 Create resources to keep Terraform state.
-
-- `gni-hearken-ai-models-deployment` S3 bucket manages Terraform state AND holds the CodeDeploy objects. Created manually, with Bucket Versioning turned on.
-- `gni-hearken-ai-models-terraform-state-locking` DynamoDB table with `string` type Primary Key called `LockID`. Tag `Project` = `gni-hearken-ai-models` Be sure it's in us-east-1!
-
-as usual:
-
 `terraform apply`
 `bash deploy/deploy.sh` 
 

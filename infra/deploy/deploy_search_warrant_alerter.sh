@@ -2,14 +2,16 @@
 
 set -e
 
+AWS_PROFILE=personal
+
 APPNAME=tow-pacer
 BUCKET=$APPNAME-deployment2
 DEPLOYMENT_GROUP=production
 DEPLOYARCHIVEFN=deploy-$APPNAME.tar.gz
 
-tar -cvf infra/${DEPLOYARCHIVEFN%.gz} --exclude pacerporcupine/pacerporcupine/models/classifier/ --exclude pacerporcupine/pacerporcupine/models/flairner/ search_warrant_alerter/* pacerporcupine/* infra/deploy/*
-tar -rvf infra/${DEPLOYARCHIVEFN%.gz}  -C courtlistener_search_warrant_alerter appspec.yml
-gzip -f infra/${DEPLOYARCHIVEFN%.gz}
+tar -cvf infra/${DEPLOYARCHIVEFN%.gz} --exclude pacerporcupine/pacerporcupine/rss_scraper_chalice/.chalice --exclude pacerporcupine/pacerporcupine/models/classifier/ --exclude pacerporcupine/pacerporcupine/models/flairner/ search_warrant_alerter/* pacerporcupine/* infra/deploy/*
+tar -rvf infra/${DEPLOYARCHIVEFN%.gz}  -C search_warrant_alerter appspec.yml
+gzip -f  infra/${DEPLOYARCHIVEFN%.gz}
 
 aws s3 mb --region us-east-1 s3://$BUCKET || echo "bucket exists already"
 aws s3 rm s3://$BUCKET/$DEPLOYARCHIVEFN
