@@ -112,3 +112,13 @@ class Classifier:
         dataframe_of_texts["predicted_class"] = np.argmax(predictions, axis=1).tolist()
         dataframe_of_texts["likelihood"] = np.transpose(softmax(predictions, axis=1))[1]
         return dataframe_of_texts
+
+
+if __name__ == "__main__":
+    # predict
+    import pandas as pd
+    casename_shortdesc_classifier = Classifier(
+        "/tmp/pacerporcupine/models/classifier/casename_shortdesc_model/"
+    )
+    docs_df = casename_shortdesc_classifier.predict(pd.DataFrame({"to_classify": ["USA v. Snapchat Account | Case Unsealed", "USA v. Snapchat Account | Application for Warrant"]}), "to_classify")
+    print(docs_df)

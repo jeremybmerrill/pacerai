@@ -15,3 +15,9 @@ class NamedEntityRecognizer:
         sentence = Sentence(sentence_str)
         self.ner_model.predict(sentence)
         return sentence.get_spans("ner")
+
+
+if __name__ == "__main__":
+    ner = NamedEntityRecognizer("/tmp/pacerporcupine/models/flairner/best-model.pt")
+    sentence_entities = ner.predict("USA v. Snapchat Account")
+
