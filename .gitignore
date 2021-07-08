@@ -18,6 +18,10 @@ doj_press_releases_scraper/*.csv
 pdfs/**/*.pdf
 __pycache__
 .ipynb_checkpoints
+.vscode/
+Untitled.ipynb
+rss_scraper_old_nonchalice/
+
 
 pacerporcupine/pacerporcupine/models/
 pacerporcupine/pacerporcupine/models/classifier/
