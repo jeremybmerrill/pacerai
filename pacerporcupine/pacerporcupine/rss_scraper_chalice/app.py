@@ -141,7 +141,6 @@ def scrape_court(court):
         )  # [~Util - Modify Hearings/Deadlines (Full List)] (<a href="https://ecf.txnd.uscourts.gov/doc1/177114116288?caseid=339097&de_seq_num=155" >46</a>)
         document_type = description.split("(", 1)[0].strip().lstrip("[").rstrip("]")
         title = unescape(entry["title"])
-        print(entry)
         if "(<a" in description:
             document_link = description.split("(", 1)[1][:-1]  # maybe None
             document_link_soup = BeautifulSoup(document_link, "html.parser").find_all(
