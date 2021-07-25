@@ -1,9 +1,9 @@
 .DS_Store
 .env
-infra/deploy/rss_scraper_lambda.zip
-infra/deploy/.terraform.lock.hcl
-infra/deploy-tow-pacer.tar.gz
-infra/deploy/.terraform/
+deploy/rss_scraper_lambda.zip
+deploy/.terraform.lock.hcl
+deploy-tow-pacer.tar.gz
+deploy/.terraform/
 
 search_warrants_model_training/classifier/*.pt
 search_warrants_model_training/classifier/*.zip
@@ -11,9 +11,9 @@ search_warrants_model_training/classifier/*.bin
 search_warrants_model_training/classifier/regular_bert/
 search_warrants_model_training/classifier/regular_bert_casename_plus_description/
 search_warrants_model_training/search_warrant_ner_model/
-doj_press_releases_scraper/doj/
-doj_press_releases_scraper/pdfs/
-doj_press_releases_scraper/*.csv
+experiments_and_deadends/doj_press_releases_scraper/doj/
+experiments_and_deadends/doj_press_releases_scraper/pdfs/
+experiments_and_deadends/doj_press_releases_scraper/*.csv
 
 pdfs/**/*.pdf
 __pycache__

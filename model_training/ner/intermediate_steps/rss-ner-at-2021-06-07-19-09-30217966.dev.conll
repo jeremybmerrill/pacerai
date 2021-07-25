@@ -1,0 +1,331 @@
+USA	O
+v.	O
+311	B-ADDRESS
+North	I-ADDRESS
+Greenfield	I-ADDRESS
+Ave	I-ADDRESS
+Waukesha	I-ADDRESS
+WI	I-ADDRESS
+53186	I-ADDRESS
+including	I-ADDRESS
+the	I-ADDRESS
+garage	I-ADDRESS
+and	I-ADDRESS
+exterior	I-ADDRESS
+storage	I-ADDRESS
+sheds	E-ADDRESS
+
+USA	O
+v.	O
+USPS	B-PACKAGE
+Priority	I-PACKAGE
+Mail	I-PACKAGE
+Parcel	E-PACKAGE
+
+USA	O
+v.	O
+The	B-ADDRESS
+location	I-ADDRESS
+more	I-ADDRESS
+particularly	I-ADDRESS
+described	I-ADDRESS
+in	I-ADDRESS
+Attachments	I-ADDRESS
+A	I-ADDRESS
+and	I-ADDRESS
+A1	I-ADDRESS
+et	I-ADDRESS
+al	E-ADDRESS
+
+USA	O
+v.	O
+The	B-ADDRESS
+location	I-ADDRESS
+more	I-ADDRESS
+particularly	I-ADDRESS
+described	I-ADDRESS
+in	I-ADDRESS
+Attachments	I-ADDRESS
+A	I-ADDRESS
+and	I-ADDRESS
+A1	I-ADDRESS
+et	I-ADDRESS
+al	E-ADDRESS
+
+USA	O
+v.	O
+The	B-ADDRESS
+location	I-ADDRESS
+more	I-ADDRESS
+particularly	I-ADDRESS
+described	I-ADDRESS
+in	I-ADDRESS
+Attachments	I-ADDRESS
+A	I-ADDRESS
+and	I-ADDRESS
+A1	I-ADDRESS
+et	I-ADDRESS
+al	E-ADDRESS
+
+USA	O
+v.	O
+The	B-ADDRESS
+location	I-ADDRESS
+more	I-ADDRESS
+particularly	I-ADDRESS
+described	I-ADDRESS
+in	I-ADDRESS
+Attachments	I-ADDRESS
+A	I-ADDRESS
+and	I-ADDRESS
+A1	I-ADDRESS
+et	I-ADDRESS
+al	E-ADDRESS
+
+USA	O
+v.	O
+Charcoal	B-PHONE
+Apple	I-PHONE
+iPhone,	E-PHONE
+et	O
+al	O
+
+USA	O
+v.	O
+Search	B-ONLINE_ACCOUNT
+of	I-ONLINE_ACCOUNT
+Facebook	E-ONLINE_ACCOUNT
+
+USA	O
+v.	O
+Information	B-ONLINE_ACCOUNT
+
+USA	O
+v.	O
+Fiore	O
+et	O
+al	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Yang	O
+et	O
+al	O
+
+USA	O
+v.	O
+Faltine	O
+et	O
+al	O
+
+USA	O
+v.	O
+Suppressed	O
+
+USA	O
+v.	O
+Suppressed	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+iPhone	B-PHONE
+X	I-PHONE
+cellular	I-PHONE
+phone,	E-PHONE
+black	O
+in	O
+color,	O
+64GB	O
+storage	O
+size,	O
+serial	O
+number	O
+FK1WXASLJCLF,	O
+IMEI-354847094069941	O
+and	O
+iPad	B-ELECTRONIC_DEVICES_OTHER_THAN_PHONES
+model	O
+A1459,	O
+silver	O
+in	O
+color,	O
+serial	O
+number	O
+DMPJPTZFF189	O
+
+USA	O
+v.	O
+LG	B-PHONE
+Cell	I-PHONE
+Phone	E-PHONE
+and	O
+Samsung	B-PHONE
+Cell	I-PHONE
+Phone	E-PHONE
+
+USA	O
+v.	O
+Pen	B-PHONE_RECORDS
+Register	E-PHONE_RECORDS
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+Search	O
+Warrant	O
+
+USA	O
+v.	O
+121	B-ADDRESS
+Ash	I-ADDRESS
+Road,	I-ADDRESS
+Basalt,	I-ADDRESS
+Colorado	E-ADDRESS
+et	O
+al	O
+
+USA	O
+v.	O
+Blue	B-PHONE
+Samsung	I-PHONE
+Galaxy	I-PHONE
+S10e	I-PHONE
+phone	E-PHONE
+Seizure	O
+No.	O
+2021250400183201-0004	O
+(&quot;Target	O
+Device	O
+1&quot;)	O
+
+Application	O
+by	O
+the	O
+United	O
+States	O
+for	O
+a	O
+Search	O
+Warrant	O
+for	O
+Five	B-ONLINE_ACCOUNT
+Accounts	E-ONLINE_ACCOUNT
+for	O
+Investigation	O
+of	O
+18:1028	O
+and	O
+Other	O
+Offenses	O
+
+USA	O
+v.	O
+SEARCH	O
+WARRANT	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+SEARCH	O
+WARRANT	O
+
+USA	O
+v.	O
+SEALED	O
+
+USA	O
+v.	O
+4227	B-ADDRESS
+JENIFER	I-ADDRESS
+STREET	I-ADDRESS
+N.W.	I-ADDRESS
+WASHINGTON,	I-ADDRESS
+D.C.,	E-ADDRESS
+AND	O
+ELECTRONIC	B-ELECTRONIC_DEVICES_OTHER_THAN_PHONES
+DEVICES	I-ELECTRONIC_DEVICES_OTHER_THAN_PHONES
+THEREIN	E-ELECTRONIC_DEVICES_OTHER_THAN_PHONES
+UNDER	O
+RULE	O
+41	O
+
+USA	O
+v.	O
+In	O
+the	O
+matter	O
+of	O
+the	O
+search	O
+of	O
+Apple	B-PHONE
+iPhone	I-PHONE
+Touch	I-PHONE
+ID	I-PHONE
+cellular	I-PHONE
+telephone,	E-PHONE
+model	O
+A1864,	O
+iPhone	B-PHONE
+8	I-PHONE
+Plus,	E-PHONE
+black	O
+with	O
+clear	O
+Otterbox	O
+case,	O
+in	O
+custody	O
+of	O
+ATF	O
+(more	O
+fully	O
+described	O
+in	O
+Attachment	O
+A)	O
+
+USA	O
+v.	O
+A	O
+SILVER	B-CAR
+2004	I-CAR
+CHRYSLER	I-CAR
+TOWN	I-CAR
+AND	I-CAR
+COUNTRY	I-CAR
+BEARING	I-CAR
+MARYLAND	I-CAR
+LICENSE	I-CAR
+PLATE	I-CAR
+4EG9203	I-CAR
+AND	I-CAR
+VIN	I-CAR
+2C8GP54L84R603669	E-CAR
+
