@@ -27,6 +27,7 @@ pacerporcupine/pacerporcupine/models/
 pacerporcupine/pacerporcupine/models/classifier/
 pacerporcupine/pacerporcupine/models/flairner/
 pacerporcupine/pacerporcupine/rss_scraper/
+pacerporcupine/pacerporcupine/rss_scraper_chalice/.chalice/config.json
 
 rss_scraper/SQLAlchemy-1.4.7.dist-info/
 rss_scraper/__init__.py
