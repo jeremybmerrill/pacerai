@@ -2398,10 +2398,10 @@ Revere  I-ADDRESS
 Parkway I-ADDRESS
 Suite   I-ADDRESS
 135 I-ADDRESS
-,   )
+,   O
 Parker  B-PERSON
 Wilson  I-PERSON
-,   )
+,   O
 2004    B-CAR
 Nissan  I-CAR
 Pathfinder  E-CAR
@@ -2432,10 +2432,10 @@ Revere	I-ADDRESS
 Parkway	I-ADDRESS
 Suite	I-ADDRESS
 135	I-ADDRESS
-,	)
+,	O
 Parker	B-PERSON
 Wilson	I-PERSON
-,	)
+,	O
 2004	B-CAR
 Nissan	I-CAR
 Pathfinder	E-CAR
