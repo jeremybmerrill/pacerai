@@ -6,11 +6,14 @@ from os import environ
 from tqdm import tqdm
 import pandas as pd
 from dotenv import load_dotenv
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
 from pacerporcupine import courtlistener
 from pacerporcupine.models.classifier import Classifier
 from pacerporcupine.models.named_entity_recognizer import NamedEntityRecognizer
 from pacerporcupine.alerter import alert_to_log, alert_to_slack
+from pacerporcupine.db import CourtListenerSwOrNotPrediction, Base, CourtListenerNerPrediction
 
 load_dotenv()
 
@@ -18,10 +21,44 @@ DAYS_BACK = 2  # because these are DATEs not DATETIMEs, looking back a single da
 log = logging.getLogger(__name__)
 log.setLevel(logging.INFO)
 
+ENGINE = create_engine(environ.get("LIVE_DATABASE_URL"))
+Session = sessionmaker(bind=ENGINE)
+
+SEARCH_WARRANT_OR_NOT_PREDICTION_TYPE = "swornot_recap"
+SEARCH_WARRANT_OBJECT_NER_PREDICTION_TYPE = "swobjectner_recap"
+
 
 def get_search_warrant_metadata_from_courtlistener():
     pass
 
+def record_swornot_prediction(record):
+    if environ.get("SKIPDB"):
+        return
+    session = Session()
+    pred = CourtListenerSwOrNotPrediction(
+        absolute_url=record["absolute_url"],
+        prediction_type=SEARCH_WARRANT_OR_NOT_PREDICTION_TYPE,
+        prediction_value=record["predicted_class"],
+    )
+
+    session.add(pred)
+    session.commit()
+
+
+def record_ner_prediction(record, category, thing_searched):
+    print(record)
+    if environ.get("SKIPDB"):
+        return
+    session = Session()
+    pred = CourtListenerNerPrediction(
+        absolute_url=record["absolute_url"],
+        prediction_type=SEARCH_WARRANT_OBJECT_NER_PREDICTION_TYPE,
+        prediction_value=category,
+        prediction_substring=thing_searched
+    )
+
+    session.add(pred)
+    session.commit()
 
 def alert_from_courtlistener_api(start_date=None):
     casename_desc_classifier = Classifier(
@@ -62,6 +99,10 @@ def alert_from_courtlistener_api(start_date=None):
             search_warrants.shape[0]
         )
     )
+    docs_df[["absolute_url", "predicted_class"]].apply(
+        record_swornot_prediction, axis=1
+    )
+
     category_case_objects = classify_cases_by_searched_object_category(
         ner, search_warrants
     )
@@ -100,6 +141,7 @@ def classify_cases_by_searched_object_category(ner, search_warrants_df):
             ]
 
         for thing_searched, category in sentence_entities:
+            record_ner_prediction(doc, category, thing_searched)
             case_string = "- {}    *{}*".format(doc["caseName"], doc["court_id"])
             if (
                 thing_searched
@@ -125,4 +167,5 @@ def classify_cases_by_searched_object_category(ner, search_warrants_df):
 
 
 if __name__ == "__main__":
+    Base.metadata.create_all(ENGINE)
     alert_from_courtlistener_api()

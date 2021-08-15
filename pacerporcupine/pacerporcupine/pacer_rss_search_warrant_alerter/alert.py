@@ -12,7 +12,7 @@ from sqlalchemy.orm import sessionmaker
 from pacerporcupine.models.classifier import Classifier
 from pacerporcupine.models.named_entity_recognizer import NamedEntityRecognizer
 from pacerporcupine.alerter import alert_to_log, alert_to_slack
-from pacerporcupine.db import RSSDocketEntry, Prediction, Base
+from pacerporcupine.db import RSSDocketEntry, RssSwOrNotPrediction, Base, RssNerPrediction
 
 load_dotenv()
 
@@ -25,12 +25,13 @@ Session = sessionmaker(bind=ENGINE)
 
 
 SEARCH_WARRANT_OR_NOT_PREDICTION_TYPE = "swornot"
+SEARCH_WARRANT_OBJECT_NER_PREDICTION_TYPE = "swobjectner"
 def get_search_warrant_metadata_from_pacer_rss(start_date="2021-06-10"):
     session = Session()
 
     search_warrant_predictions = (
-        session.query(Prediction)
-        .filter(Prediction.prediction_type == SEARCH_WARRANT_OR_NOT_PREDICTION_TYPE)
+        session.query(RssSwOrNotPrediction)
+        .filter(RssSwOrNotPrediction.prediction_type == SEARCH_WARRANT_OR_NOT_PREDICTION_TYPE)
         .subquery()
     )
     query = (
@@ -44,11 +45,11 @@ def get_search_warrant_metadata_from_pacer_rss(start_date="2021-06-10"):
     return pd.read_sql(query.statement, query.session.bind)
 
 
-def record_prediction(record):
+def record_swornot_prediction(record):
     if environ.get("SKIPDB"):
         return
     session = Session()
-    pred = Prediction(
+    pred = RssSwOrNotPrediction(
         case_number=record["case_number"],
         pub_date=record["pub_date"],
         prediction_type=SEARCH_WARRANT_OR_NOT_PREDICTION_TYPE,
@@ -59,9 +60,24 @@ def record_prediction(record):
     session.commit()
 
 
-def alert_based_on_pacer_rss(start_date=None):
-    Base.metadata.create_all(ENGINE)
+def record_ner_prediction(record, category, thing_searched):
+    if environ.get("SKIPDB"):
+        return
+    session = Session()
+    pred = RssNerPrediction(
+        case_number=record["case_number"],
+        pub_date=record["pub_date"],
+        prediction_type=SEARCH_WARRANT_OBJECT_NER_PREDICTION_TYPE,
+        prediction_value=category,
+        prediction_substring=thing_searched
+    )
 
+    session.add(pred)
+    session.commit()
+
+
+
+def alert_based_on_pacer_rss(start_date=None):
     start_date = start_date or (datetime.today() - timedelta(days=DAYS_BACK)).strftime(
         "%m/%d/%Y"
     )
@@ -79,7 +95,7 @@ def alert_based_on_pacer_rss(start_date=None):
     )
     docs_df = casename_shortdesc_classifier.predict(docs_df, "to_classify")
     docs_df[["case_number", "pub_date", "predicted_class"]].apply(
-        record_prediction, axis=1
+        record_swornot_prediction, axis=1
     )
 
     search_warrants = docs_df[docs_df["predicted_class"] == 1].copy()
@@ -135,6 +151,7 @@ def classify_cases_by_searched_object_category(ner, search_warrants_df):
             ]
 
         for thing_searched, category in sentence_entities:
+            record_ner_prediction(doc, category, thing_searched)
             case_string = "- {}    *{}*".format(doc["caseName"], doc["court_id"])
             if (
                 thing_searched
