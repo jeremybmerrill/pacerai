@@ -15,18 +15,18 @@ permissions:
       - directory
 hooks:
   BeforeInstall:
-    - location: infra/deploy/pre-deploy.sh
+    - location: deploy/pre-deploy.sh
       timeout: 3600
       runas: root
   AfterInstall:
-    - location: infra/deploy/install_dependencies.sh
+    - location: deploy/install_dependencies.sh
       timeout: 3600
       runas: ubuntu
   ApplicationStart:
-    - location: infra/deploy/start_server.sh
+    - location: deploy/start_server.sh
       timeout: 300
       runas: root
   ApplicationStop:
-    - location: infra/deploy/stop_server.sh
+    - location: deploy/stop_server.sh
       timeout: 300
       runas: root
