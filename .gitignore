@@ -28,6 +28,7 @@ pacerporcupine/pacerporcupine/models/classifier/
 pacerporcupine/pacerporcupine/models/flairner/
 pacerporcupine/pacerporcupine/rss_scraper/
 pacerporcupine/pacerporcupine/rss_scraper_chalice/.chalice/config.json
+pacerporcupine/category_case_objects_courtlistener.json
 
 rss_scraper/SQLAlchemy-1.4.7.dist-info/
 rss_scraper/__init__.py

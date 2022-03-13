@@ -7,7 +7,7 @@ from operator import itemgetter
 
 
 def case_object_to_slarkdown(
-    case_name=None, absolute_url=None, thing_searched=None, court_id=None, category=None, document_type=None
+    case_name=None, absolute_url=None, thing_searched=None, court_id=None, category=None, document_type=None,**kwargs
 ):
     case_name = unescape(case_name)
     if (
@@ -24,7 +24,7 @@ def case_object_to_slarkdown(
 
 
 def case_object_to_text(
-    case_name=None, absolute_url=None, thing_searched=None, court_id=None, category=None, document_type=None
+    case_name=None, absolute_url=None, thing_searched=None, court_id=None, category=None, document_type=None,**kwargs
 ):
     case_name = unescape(case_name)
     if (

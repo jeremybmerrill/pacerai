@@ -17,7 +17,7 @@ from pacerporcupine.db import CourtListenerSwOrNotPrediction, Base, CourtListene
 
 load_dotenv()
 
-DAYS_BACK = 2  # because these are DATEs not DATETIMEs, looking back a single day only gets us stuff filed TODAY which isn't necessarily what we want.
+DAYS_BACK = 800  # because these are DATEs not DATETIMEs, looking back a single day only gets us stuff filed TODAY which isn't necessarily what we want.
 log = logging.getLogger(__name__)
 log.setLevel(logging.INFO)
 
@@ -111,6 +111,9 @@ def alert_from_courtlistener_api(start_date=None):
         alert_to_slack(
             category_case_objects, "search warrants from the CourtListener API"
         )
+    with open("category_case_objects_courtlistener.json", 'w') as f: 
+        import json
+        f.write(json.dumps(category_case_objects, indent=4, sort_keys=True))
     return {"okee": "dokee"}
 
 
@@ -153,6 +156,7 @@ def classify_cases_by_searched_object_category(ner, search_warrants_df):
 
             case_object = {
                 "case_name": doc["caseName"],
+                "description": doc["description"],
                 "thing_searched": thing_searched,
                 "court_id": doc["court_id"],
                 "absolute_url": doc["absolute_url"],

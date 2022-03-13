@@ -86,7 +86,7 @@ class RssSwOrNotPrediction(Base):
 class CourtListenerNerPrediction(Base):
     __tablename__ = "courtlistener_ner_predictions"
     id = Column(Integer, primary_key=True)
-    absolute_url=Column(String),
+    absolute_url=Column(String)
     prediction_type = Column(String)
     prediction_value = Column(String) # category, e.g. "Phone"
     prediction_substring = Column(String) # e.g. "rose gold i-Phone"
@@ -96,7 +96,7 @@ class CourtListenerNerPrediction(Base):
 class CourtListenerSwOrNotPrediction(Base):
     __tablename__ = "courtlistener_predictions"
     id = Column(Integer, primary_key=True)
-    absolute_url=Column(String),
+    absolute_url=Column(String)
     prediction_type = Column(String)
     prediction_value = Column(Boolean)
 
