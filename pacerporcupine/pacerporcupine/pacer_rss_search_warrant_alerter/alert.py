@@ -119,6 +119,7 @@ def alert_based_on_pacer_rss(start_date=None):
     category_case_objects = classify_cases_by_searched_object_category(
         ner, search_warrants
     )
+    del category_case_objects["no category detected"]
     alert_to_log(category_case_objects, "search warrants from PACER RSS")
     if not environ.get("SKIP_SLACK"):
         alert_to_slack(category_case_objects, "search warrants from PACER RSS")
