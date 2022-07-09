@@ -44,6 +44,8 @@ def case_object_to_text(
 
 def alert_to_slack(category_case_objects, intro=None):
     slack_blocks = []
+    if len(category_case_objects) == 0:
+        return
     if environ.get("SLACKWH"):
         if intro:
             slack_blocks.append(
