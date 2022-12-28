@@ -104,7 +104,7 @@ class CourtListenerSwOrNotPrediction(Base):
 if __name__ == "__main__":
     from sqlalchemy.orm import sessionmaker
     from sqlalchemy import create_engine
-    from os.path import environ
+    from os import environ
 
     engine = create_engine(environ.get("DATABASE_URL"))
     Session = sessionmaker(bind=engine)
