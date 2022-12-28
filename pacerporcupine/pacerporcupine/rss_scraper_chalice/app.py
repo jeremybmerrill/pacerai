@@ -101,6 +101,96 @@ courts = [
     "wyd",
 ]
 
+bankruptcy_courts = [
+    "almb",
+    "alnb",
+    "alsb",
+    "akb",
+    "azb",
+    "areb",
+    "cacb",
+    "caeb",
+    "canb",
+    "casb",
+    "cob",
+    "ctb",
+    "deb",
+    "dcb",
+    "flmb",
+    "flnb",
+    "flsb",
+    "gamb",
+    "ganb",
+    "gasb",
+    "hib",
+    "ilcb",
+    "ilnb",
+    "ilsb",
+    "innb",
+    "insb",
+    "ianb",
+    "iasb",
+    "ksb",
+    "kyeb",
+    "kywb",
+    "laeb",
+    "lamb",
+    "lawb",
+    "meb",
+    "mdb",
+    "mab",
+    "mieb",
+    "miwb",
+    "mnb",
+    "msnb",
+    "mssb",
+    "moeb",
+    "mtb",
+    "neb",
+    "nvb",
+    "nhb",
+    "njb",
+    "nmb",
+    "nyeb",
+    "nynb",
+    "nysb",
+    "nywb",
+    "nceb",
+    "ncmb",
+    "ncwb",
+    "ndb",
+    "ohnb",
+    "ohsb",
+    "okeb",
+    "oknb",
+    "okwb",
+    "orb",
+    "paeb",
+    "pamb",
+    "pawb",
+    "prb",
+    "rib",
+    "scb",
+    "sdb",
+    "tneb",
+    "tnmb",
+    "tnwb",
+    "txeb",
+    "txnb",
+    "txwb",
+    "utb",
+    "vtb",
+    "vaeb",
+    "vawb",
+    "waeb",
+    "wawb",
+    "wvnb",
+    "wvsb",
+    "wieb",
+    "wiwb",
+    "wyb"
+]
+
 # TODO: import from pacerporcupine.db
 Base = declarative_base()
 Session = sessionmaker(bind=engine)
@@ -152,7 +242,10 @@ def scrape_court(court):
                 if "de_seq_num" in parsed_query_string
                 else None
             )
-            docket_entry_num = document_link_soup.get_text()
+            try:
+                docket_entry_num = int(document_link_soup.get_text())
+            except ValueError:
+                docket_entry_num = None
         else:
             document_link = None
             document_link_soup = None
@@ -187,7 +280,7 @@ def scrape_all_courts(event):
         scrape_court(court)
 
 
-for i, court in enumerate(courts):
+for i, court in enumerate(courts + bankruptcy_courts):
     exec(
         """
 @app.schedule("cron({} 8-22/1 ? * MON-FRI *)")
@@ -200,21 +293,22 @@ def scrape_{}(event):
     )
 
 if __name__ == "__main__":
-    scrape_ohnd(
-        {
-            "version": "0",
-            "id": "53dc4d37-cffa-4f76-80c9-8b7d4a4d2eaa",
-            "detail-type": "Scheduled Event",
-            "source": "aws.events",
-            "account": "123456789012",
-            "time": "2015-10-08T16:53:06Z",
-            "region": "us-east-1",
-            "resources": [
-                "arn:aws:events:us-east-1:123456789012:rule/my-scheduled-rule"
-            ],
-            "detail": {},
-        },
-        {},
-    )
+    for court in bankruptcy_courts:
+        locals()[f"scrape_{court}"](
+            {
+                "version": "0",
+                "id": "53dc4d37-cffa-4f76-80c9-8b7d4a4d2eaa",
+                "detail-type": "Scheduled Event",
+                "source": "aws.events",
+                "account": "123456789012",
+                "time": "2015-10-08T16:53:06Z",
+                "region": "us-east-1",
+                "resources": [
+                    "arn:aws:events:us-east-1:123456789012:rule/my-scheduled-rule"
+                ],
+                "detail": {},
+            },
+            {},
+        )
 
-#
+    #
