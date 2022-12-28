@@ -14,11 +14,8 @@ from sqlalchemy import (
     UniqueConstraint,
 )
 from sqlalchemy.orm import declarative_base, sessionmaker
-from dotenv import load_dotenv
 from bs4 import BeautifulSoup
-from chalice import Chalice, Cron
-
-load_dotenv()
+from chalice import Chalice
 
 engine = create_engine(environ.get("DATABASE_URL"))
 app = Chalice(app_name="rss_scraper_chalice")
@@ -152,7 +149,11 @@ def scrape_court(court):
                 if "de_seq_num" in parsed_query_string
                 else None
             )
-            docket_entry_num = document_link_soup.get_text()
+            try: 
+                docket_entry_num = int(document_link_soup.get_text())
+            except ValueError:
+                print(f"couldn't parse docket_entry_num int from {document_link_soup}")
+                docket_entry_num = None
         else:
             document_link = None
             document_link_soup = None
@@ -179,7 +180,7 @@ def scrape_court(court):
 
 # Automatically runs every two hours minutes
 # @app.schedule("cron(0 8-22/2 ? * MON-FRI *)")
-def scrape_all_courts(event):
+def scrape_all_courts(event, ctx=None):
     # visit each one's RSS feed
     Base.metadata.create_all(engine)
 
@@ -200,7 +201,7 @@ def scrape_{}(event):
     )
 
 if __name__ == "__main__":
-    scrape_ohnd(
+    scrape_all_courts(
         {
             "version": "0",
             "id": "53dc4d37-cffa-4f76-80c9-8b7d4a4d2eaa",
