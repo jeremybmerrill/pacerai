@@ -15,10 +15,8 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import declarative_base, sessionmaker
 from bs4 import BeautifulSoup
-from chalice import Chalice
 
 engine = create_engine(environ.get("DATABASE_URL"))
-app = Chalice(app_name="rss_scraper_chalice")
 
 courts = [
     "almd",
@@ -268,30 +266,14 @@ def scrape_court(court):
     session.commit()
 
 
-# Automatically runs every two hours minutes
-# @app.schedule("cron(0 8-22/2 ? * MON-FRI *)")
 def scrape_all_courts(event, ctx=None):
-    # visit each one's RSS feed
     Base.metadata.create_all(engine)
 
     for court in courts + bankruptcy_courts:
         scrape_court(court)
 
-
-for i, court in enumerate(courts + bankruptcy_courts):
-    exec(
-        """
-@app.schedule("cron({} 8-22/1 ? * MON-FRI *)")
-def scrape_{}(event):
-    scrape_court("{}")
-
-    """.format(
-            int(i / 2), court, court
-        )
-    )
-
 if __name__ == "__main__":
-    for court in bankruptcy_courts:
+#    for court in bankruptcy_courts:
 #        locals()[f"scrape_{court}"](
         scrape_all_courts(
             {
