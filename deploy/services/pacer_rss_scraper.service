@@ -1,0 +1,20 @@
+[Unit]
+Description=pacer_rss_scraper
+After=network.target
+
+[Service]
+EnvironmentFile=/home/ubuntu/.env
+Environment=PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
+Environment=HOME=/home/ubuntu/
+WorkingDirectory=/home/ubuntu/tow-pacer/pacerporcupine/pacerporcupine/rss_scraper_chalice/
+TimeoutStartSec=900
+ExecStart=/usr/bin/python3 -m app
+ExecReload=/bin/kill -s HUP $MAINPID
+KillMode=mixed
+TimeoutStopSec=5
+PrivateTmp=true
+RuntimeMaxSec=600
+
+
+[Install]
+WantedBy=default.target
