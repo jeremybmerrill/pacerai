@@ -116,6 +116,7 @@ def alert_from_courtlistener_api(start_date=None):
     category_case_objects = classify_cases_by_searched_object_category(
         ner, search_warrants
     )
+    del category_case_objects["no category detected"]
     alert_to_log(category_case_objects, "search warrants from the CourtListener API")
     if not environ.get("SKIP_SLACK"):
         alert_to_slack(
