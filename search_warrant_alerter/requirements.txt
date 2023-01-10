@@ -1,7 +1,7 @@
--e ../pacerporcupine
+../pacerporcupine
 pandas==1.1.5
 flair==0.8.0.post1
 python-dotenv
 boto3==1.17.7
 sqlalchemy
-psycopg2
+psycopg2-binary
