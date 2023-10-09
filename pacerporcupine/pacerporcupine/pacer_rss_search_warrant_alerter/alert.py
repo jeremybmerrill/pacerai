@@ -124,6 +124,30 @@ def alert_based_on_pacer_rss(start_date=None):
     if not environ.get("SKIP_SLACK"):
         alert_to_slack(category_case_objects, "search warrants from PACER RSS")
 
+    delete_non_sw_rss_docket_entries()
+
+def delete_non_sw_rss_docket_entries():
+    """
+    the DB had gotten huge, with 13+ GB of random PACER RSS entries 
+    that weren't search warrants or otherwise useful. this deletes them.
+    """
+    if environ.get("SKIPDB"):
+        return
+    session = Session()
+    session.execute("""
+                    delete from rss_docket_entries using (
+                        select case_number, pub_date 
+                        from rss_docket_entries 
+                        
+                        except 
+                    
+                        select case_number, pub_date 
+                        from rss_docket_entries 
+                        join predictions using (case_number, pub_date)
+                    ) sw where 
+                    rss_docket_entries.pub_date = sw.pub_date and 
+                    rss_docket_entries.case_number = sw.case_number;""")
+    session.commit()
 
 def classify_cases_by_searched_object_category(ner, search_warrants_df):
     """
