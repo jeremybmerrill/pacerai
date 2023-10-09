@@ -60,6 +60,26 @@ def record_ner_prediction(record, category, thing_searched):
     session.add(pred)
     session.commit()
 
+def delete_non_sw_rss_docket_entries():
+    if environ.get("SKIPDB"):
+        return
+    session = Session()
+    session.execute("""
+                    delete from rss_docket_entries using (
+                        select case_number, pub_date 
+                        from rss_docket_entries 
+                        
+                        except 
+                    
+                        select case_number, pub_date 
+                        from rss_docket_entries 
+                        join predictions using (case_number, pub_date)
+                    ) sw where 
+                    rss_docket_entries.pub_date = sw.pub_date and 
+                    rss_docket_entries.case_number = sw.case_number;""")
+    session.commit()
+
+
 def url_exists_in_db(absolute_url, session):
     return session.query(CourtListenerSwOrNotPrediction).filter(CourtListenerSwOrNotPrediction.absolute_url==absolute_url).count() > 0
 
