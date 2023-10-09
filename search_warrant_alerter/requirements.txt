@@ -1,7 +1,8 @@
 ../pacerporcupine
 pandas==1.1.5
-flair==0.8.0.post1
+torch==1.13.1
+flair
 python-dotenv
 boto3==1.17.7
-sqlalchemy
+sqlalchemy==1.4.49
 psycopg2-binary
