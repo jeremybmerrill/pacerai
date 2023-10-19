@@ -79,7 +79,7 @@ def record_ner_prediction(record, category, thing_searched):
 
 def alert_based_on_pacer_rss(start_date=None):
     start_date = start_date or (datetime.today() - timedelta(days=DAYS_BACK)).strftime(
-        "%m/%d/%Y"
+        "%Y-%m/%d"
     )
 
     docs_df = get_search_warrant_metadata_from_pacer_rss(start_date)
