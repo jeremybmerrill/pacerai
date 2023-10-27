@@ -79,7 +79,7 @@ def record_ner_prediction(record, category, thing_searched):
 
 def alert_based_on_pacer_rss(start_date=None):
     start_date = start_date or (datetime.today() - timedelta(days=DAYS_BACK)).strftime(
-        "%m/%d/%Y"
+        "%Y-%m-%d"
     )
 
     docs_df = get_search_warrant_metadata_from_pacer_rss(start_date)
@@ -88,7 +88,7 @@ def alert_based_on_pacer_rss(start_date=None):
     if docs_df.shape[0] == 0:
         return
     docs_df["to_classify"] = docs_df.case_name + " | " + docs_df.document_type
-
+    docs_df.dropna(subset=["to_classify"], inplace=True)
     # predict
     casename_shortdesc_classifier = Classifier(
         "/tmp/pacerporcupine/models/classifier/casename_shortdesc_model/"
@@ -119,7 +119,8 @@ def alert_based_on_pacer_rss(start_date=None):
     category_case_objects = classify_cases_by_searched_object_category(
         ner, search_warrants
     )
-    del category_case_objects["no category detected"]
+    if "no category detected" in category_case_objects:
+        del category_case_objects["no category detected"]
     alert_to_log(category_case_objects, "search warrants from PACER RSS")
     if not environ.get("SKIP_SLACK"):
         alert_to_slack(category_case_objects, "search warrants from PACER RSS")

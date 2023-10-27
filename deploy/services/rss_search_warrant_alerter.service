@@ -3,12 +3,12 @@ Description=pacer_rss_search_warrant_alerter
 After=network.target
 
 [Service]
-EnvironmentFile=/home/ubuntu/.env
+EnvironmentFile=/home/pi/pacerai/.env
 Environment=PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
-Environment=HOME=/home/ubuntu/
-WorkingDirectory=/home/ubuntu/tow-pacer/search_warrant_alerter/
+Environment=HOME=/home/pi/
+WorkingDirectory=/home/pi/pacerai/search_warrant_alerter/
 TimeoutStartSec=300
-ExecStart=/usr/bin/python3 -m pacer_rss_alerter
+ExecStart=/home/pi/.virtualenvs/pacer/bin/python -m pacer_rss_alerter
 ExecReload=/bin/kill -s HUP $MAINPID
 KillMode=mixed
 TimeoutStopSec=5

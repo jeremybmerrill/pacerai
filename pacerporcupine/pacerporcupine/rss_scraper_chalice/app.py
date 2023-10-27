@@ -16,7 +16,7 @@ from sqlalchemy import (
 from sqlalchemy.orm import declarative_base, sessionmaker
 from bs4 import BeautifulSoup
 
-engine = create_engine(environ.get("DATABASE_URL"))
+engine = create_engine(environ.get("DATABASE_URL"), echo=False)
 
 courts = [
     "almd",
@@ -267,7 +267,7 @@ def scrape_court(court):
 
 
 def scrape_all_courts(event, ctx=None):
-    Base.metadata.create_all(engine)
+    # Base.metadata.create_all(engine)
 
     for court in courts + bankruptcy_courts:
         scrape_court(court)
