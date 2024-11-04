@@ -39,7 +39,7 @@ def get_search_warrant_pdf(recap_filepath_local):
 
 
 # def get_docket_entries():
-#     "https://www.courtlistener.com/api/rest/v3/docket-entries/?docket__id=XXX"
+#     "https://www.courtlistener.com/api/rest/v4/docket-entries/?docket__id=XXX"
 def search_recap_with_url(url):
     API_KEY = environ.get("API_KEY")
 
@@ -72,7 +72,7 @@ def search_recap(
         urlparams["q"] = q  # wwg1wga
     print(urlparams)
     return search_recap_with_url(
-        "https://www.courtlistener.com/api/rest/v3/search/?{}".format(
+        "https://www.courtlistener.com/api/rest/v4/search/?{}".format(
             urlencode(urlparams)
         )
     )
