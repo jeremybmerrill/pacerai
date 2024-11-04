@@ -39,7 +39,7 @@ def get_search_warrant_pdf(recap_filepath_local):
 
 
 # def get_docket_entries():
-#     "https://www.courtlistener.com/api/rest/v4/docket-entries/?docket__id=XXX"
+#     "https://www.courtlistener.com/api/rest/v3/docket-entries/?docket__id=XXX"
 def search_recap_with_url(url):
     API_KEY = environ.get("API_KEY")
 
@@ -56,6 +56,14 @@ def search_recap_with_url(url):
 def search_recap(
     q=None, description=None, available_only=None, suit_nature=None, filed_after=None
 ):
+    # sadly we can't easily upgrade to Courtlistener v4
+    # type "r" is missing documents (i.e. absolute_url)
+    # the new type "rd" is missing case-level data like caseName
+    # I'll have to make two queries, one search, then fetch the docket per document
+    # cf. https://www.courtlistener.com/help/api/rest/v4/migration-guide/
+
+
+
     urlparams = {
         "type": "r",  # Document-oriented results from the RECAP Archive
         "order_by": "entry_date_filed desc",
@@ -72,7 +80,7 @@ def search_recap(
         urlparams["q"] = q  # wwg1wga
     print(urlparams)
     return search_recap_with_url(
-        "https://www.courtlistener.com/api/rest/v4/search/?{}".format(
+        "https://www.courtlistener.com/api/rest/v3/search/?{}".format(
             urlencode(urlparams)
         )
     )
