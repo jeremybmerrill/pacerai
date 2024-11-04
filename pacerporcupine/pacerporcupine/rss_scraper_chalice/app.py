@@ -14,14 +14,9 @@ from sqlalchemy import (
     UniqueConstraint,
 )
 from sqlalchemy.orm import declarative_base, sessionmaker
-from dotenv import load_dotenv
 from bs4 import BeautifulSoup
-from chalice import Chalice, Cron
 
-load_dotenv()
-
-engine = create_engine(environ.get("DATABASE_URL"))
-app = Chalice(app_name="rss_scraper_chalice")
+engine = create_engine(environ.get("DATABASE_URL"), echo=False)
 
 courts = [
     "almd",
@@ -242,9 +237,10 @@ def scrape_court(court):
                 if "de_seq_num" in parsed_query_string
                 else None
             )
-            try:
+            try: 
                 docket_entry_num = int(document_link_soup.get_text())
             except ValueError:
+                print(f"couldn't parse docket_entry_num int from {document_link_soup}")
                 docket_entry_num = None
         else:
             document_link = None
@@ -270,31 +266,16 @@ def scrape_court(court):
     session.commit()
 
 
-# Automatically runs every two hours minutes
-# @app.schedule("cron(0 8-22/2 ? * MON-FRI *)")
-def scrape_all_courts(event):
-    # visit each one's RSS feed
-    Base.metadata.create_all(engine)
+def scrape_all_courts(event, ctx=None):
+    # Base.metadata.create_all(engine)
 
-    for court in courts:
+    for court in courts + bankruptcy_courts:
         scrape_court(court)
 
-
-for i, court in enumerate(courts + bankruptcy_courts):
-    exec(
-        """
-@app.schedule("cron({} 8-22/1 ? * MON-FRI *)")
-def scrape_{}(event):
-    scrape_court("{}")
-
-    """.format(
-            int(i / 2), court, court
-        )
-    )
-
 if __name__ == "__main__":
-    for court in bankruptcy_courts:
-        locals()[f"scrape_{court}"](
+#    for court in bankruptcy_courts:
+#        locals()[f"scrape_{court}"](
+        scrape_all_courts(
             {
                 "version": "0",
                 "id": "53dc4d37-cffa-4f76-80c9-8b7d4a4d2eaa",

@@ -60,6 +60,10 @@ def record_ner_prediction(record, category, thing_searched):
     session.add(pred)
     session.commit()
 
+def url_exists_in_db(absolute_url, session):
+    return session.query(CourtListenerSwOrNotPrediction).filter(CourtListenerSwOrNotPrediction.absolute_url==absolute_url).count() > 0
+
+
 def alert_from_courtlistener_api(start_date=None):
     casename_desc_classifier = Classifier(
         join(
@@ -88,7 +92,13 @@ def alert_from_courtlistener_api(start_date=None):
         "absolute_url"
     ] = "https://www.courtlistener.com" + docs_df.absolute_url.astype("str")
 
+    with Session() as session:
+        docs_df["exists_in_db"] = docs_df.absolute_url.apply(lambda url: url_exists_in_db(url, session))
+    docs_df = docs_df[~docs_df["exists_in_db"]].copy()
+
     log.info("found {} possible search warrants".format(docs_df.shape[0]))
+    if len(docs_df) == 0:
+        return {"okee": "dokee"}
     docs_df["to_classify"] = docs_df.caseName + " " + docs_df.description
     docs_df = casename_desc_classifier.predict(
         docs_df, "description"
@@ -106,6 +116,7 @@ def alert_from_courtlistener_api(start_date=None):
     category_case_objects = classify_cases_by_searched_object_category(
         ner, search_warrants
     )
+    del category_case_objects["no category detected"]
     alert_to_log(category_case_objects, "search warrants from the CourtListener API")
     if not environ.get("SKIP_SLACK"):
         alert_to_slack(

@@ -1,18 +1,19 @@
 [Unit]
-Description=pacer_rss_search_warrant_alerter
+Description=pacer_rss_scraper
 After=network.target
 
 [Service]
 EnvironmentFile=/home/pi/pacerai/.env
 Environment=PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
 Environment=HOME=/home/pi/
-WorkingDirectory=/home/pi/pacerai/search_warrant_alerter/
-TimeoutStartSec=300
-ExecStart=/home/pi/.virtualenvs/pacer/bin/python -m pacer_rss_alerter
+WorkingDirectory=/home/pi/pacerai/pacerporcupine/pacerporcupine/rss_scraper_chalice/
+TimeoutStartSec=900
+ExecStart=/home/pi/.virtualenvs/pacer/bin/python -m app
 ExecReload=/bin/kill -s HUP $MAINPID
 KillMode=mixed
 TimeoutStopSec=5
 PrivateTmp=true
+RuntimeMaxSec=1800
 
 
 [Install]

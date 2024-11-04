@@ -9,14 +9,15 @@ pandas = "*"
 flair = "*"
 jupyter = "*"
 requests = "*"
-psycopg2 = "*"
-sqlalchemy = "*"
+psycopg2-binary = "*"
+sqlalchemy = "1.4.49"
 feedparser = "*"
 bs4 = "*"
 scrapy = "*"
 keras = "*"
 tensorflow = "*"
 chalice = "*"
+torch = "1.13.1"
 
 [dev-packages]
 

@@ -209,7 +209,7 @@ resource "aws_db_instance" "ai_db_instance" {
   allocated_storage      = "16"
   storage_type           = "gp2"
   engine                 = "postgres"
-  engine_version         = "12.7"
+  engine_version         = "12.8"
   instance_class         = "db.t3.micro"
   vpc_security_group_ids = [aws_security_group.db_security_group.id]
   deletion_protection    = true
@@ -306,6 +306,11 @@ resource "aws_iam_instance_profile" "s3_readerwriter" {
 resource "aws_security_group" "security_group" {
   name        = "${var.name} security group"
   description = "Managed by Terraform"
+
+  ingress {
+    from_port 
+  }
+
 
   ingress {
     from_port   = 80
